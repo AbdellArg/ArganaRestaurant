@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ArganaRestaurant.Styles.Components.ProductsCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArganaRestaurant.Styles.Components"
+             x:Name="root"
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="150" Background="Transparent">
+    <Grid>
+        <Canvas Height="240" Width="150">
+
+            <Border Panel.ZIndex="500" HorizontalAlignment="Center" Width="150">
+                <Ellipse  Height="115" Width="115" Margin="10" >
+                    <Ellipse.Fill>
+                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+
+            <Grid Panel.ZIndex="100" Height="180" Width="150" Canvas.Top="60" Margin="0" >
+
+                <Border CornerRadius="15" >
+                    <Border.Background>
+                        <SolidColorBrush Color="#FFEDEDED" Opacity="0.993" />
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="6" Direction="10"
+                                                  Opacity="0.5" RenderingBias="Performance"/>
+                    </Border.Effect>
+
+                    <Canvas Margin="0 70 0 0" >
+
+                        <TextBlock Text="{Binding Path=Titel, ElementName=root}" Canvas.Top="1" FontFamily="Corbel" FontSize="14" Width="150" Padding="10" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" LineHeight="20" FontWeight="Heavy" TextWrapping="Wrap" />
+
+                        <Label Canvas.Bottom="15" Canvas.Left="8" FontFamily="Arial Black" FontSize="15" Foreground="#354f52" Content="{Binding Path=Price, ElementName=root}" />
+
+                        <Button x:Name="AddToOrders" Canvas.Bottom="15" Canvas.Right="10" Height="30" Width="70" Cursor="Hand" />
+
+                    </Canvas>
+
+                </Border>
+            </Grid>
+
+        </Canvas>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<Folder Include="Models\" />
+		<Folder Include="ViewModels\" />
+		<Folder Include="Views\" />
+		<Folder Include="Styles\" />
+		<Folder Include="Ressources\" />
+		<Folder Include="Data\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Data\ProductsImages\Dish.png" />
+		<Resource Include="Ressources\logo.png" />
+	</ItemGroup>
+
+</Project>
