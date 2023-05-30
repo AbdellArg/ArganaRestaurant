@@ -1,7 +1,9 @@
 ﻿using ArganaRestaurant.Styles.Components;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,30 +22,69 @@ namespace ArganaRestaurant
     public partial class MainWindow : Window
     {
 
-
         public MainWindow()
         {
             InitializeComponent();
-            List<ProductsCard> Products = new List<ProductsCard>();
-            ProductsCard p1 = new ProductsCard();
-            p1.Titel = "Product1";
-            p1.Price = "6 €";
-            p1.ImageURI = new Uri("Data/ProductsImages/Dish.png", UriKind.Relative);
-            ProductsCard p2 = new ProductsCard();
-            p1.Titel = "Product3";
-            p1.Price = "13 €";
-            p1.ImageURI = new Uri("Data/ProductsImages/Dish.png", UriKind.Relative);
-            ProductsCard p3 = new ProductsCard();
-            p1.Titel = "Product3";
-            p1.Price = "9.5 €";
-            p1.ImageURI = new Uri("Data/ProductsImages/Dish.png", UriKind.Relative);
+
+            var Products = new List<ProductsCard>();
+
+            ProductsCard p1 = new()
+            {
+                Titel = "Marokkanischers Couscous Veggie",
+                Price = "23 €",
+                ImageURI = new Uri("Data/ProductsImages/Couscous1.png", UriKind.Relative)
+            };
+            
+            ProductsCard p2 = new()
+            {
+                Titel = "Fish Fingers Mit Käse",
+                Price = "15 €",
+                ImageURI = new Uri("Data/ProductsImages/Dish.png", UriKind.Relative)
+            };
+            ProductsCard p3 = new()
+            {
+                Titel = "Plate1 Chicken Wings",
+                Price = "8 €",
+                ImageURI = new Uri("Data/ProductsImages/Plate1.png", UriKind.Relative)
+            };
+            ProductsCard p4 = new()
+            {
+                Titel = "Plate2 Lahm Steacks Mit Salad",
+                Price = "7.5 €",
+                ImageURI = new Uri("Data/ProductsImages/Plate2.png", UriKind.Relative)
+            };
+            ProductsCard p5 = new()
+            {
+                Titel = "Tajine l7amm wl Bar9o9",
+                Price = "15 €",
+                ImageURI = new Uri("Data/ProductsImages/Tajine.png", UriKind.Relative)
+            };
+            ProductsCard p6 = new()
+            {
+                Titel = "Tajine GemüsenMischung Veggie",
+                Price = "12 €",
+                ImageURI = new Uri("Data/ProductsImages/Tajine2.png", UriKind.Relative)
+            };
+            ProductsCard p7 = new()
+            {
+                Titel = "Marokkanischer MinzenTea",
+                Price = "4.5 €",
+                ImageURI = new Uri("Data/ProductsImages/Tea.jpg", UriKind.Relative)
+            };
             Products.Add(p1);
             Products.Add(p2);
-            Products.Add(p3);
+            Products.Add(p3); 
+            Products.Add(p4);
+            Products.Add(p5);
+            Products.Add(p6);
+            Products.Add(p7);
 
             ProductsList.ItemsSource = Products;
 
         }
+
+
+        
 
 
         private void MainBackground_MouseDown(object sender, MouseButtonEventArgs e)
@@ -75,5 +116,6 @@ namespace ArganaRestaurant
             }
         }
 
-     }
+        
+    }
 }

@@ -9,11 +9,21 @@
         Background="BlanchedAlmond">
     <Grid>
         <ListView x:Name="myList" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Background="Black" HorizontalAlignment="Center" Width="500"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Brown" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Width" Value="140" />
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="Background" Value="Brown" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
     </Grid>

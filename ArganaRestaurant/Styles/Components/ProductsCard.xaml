@@ -7,20 +7,21 @@
              x:Name="root"
              mc:Ignorable="d" 
              d:DesignHeight="240" d:DesignWidth="150" Background="Transparent">
+    
     <Grid>
-        <Canvas Height="240" Width="150">
+        <Canvas x:Name="CardLayout" Height="240" Width="150">
 
             <Border Panel.ZIndex="500" HorizontalAlignment="Center" Width="150">
                 <Ellipse  Height="115" Width="115" Margin="10" >
                     <Ellipse.Fill>
-                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}"/>
+                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}" TileMode="None"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </Border>
 
             <Grid Panel.ZIndex="100" Height="180" Width="150" Canvas.Top="60" Margin="0" >
 
-                <Border CornerRadius="15" >
+                <Border x:Name="CardHolder" CornerRadius="15" >
                     <Border.Background>
                         <SolidColorBrush Color="#FFEDEDED" Opacity="0.993" />
                     </Border.Background>

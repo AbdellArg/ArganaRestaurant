@@ -26,4 +26,5 @@ C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-w
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ArganaRestaurant.pdb
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ArganaRestaurant.genruntimeconfig.cache
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ref\ArganaRestaurant.dll
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\ProductsListBoxStyle.baml
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

@@ -60,11 +60,17 @@ namespace ArganaRestaurant.Styles.Components
             DependencyProperty.Register("Price", typeof(string), typeof(ProductsCard), new PropertyMetadata(string.Empty));
 
 
+        public void Selected()
+        {
+            this.CardHolder.BorderBrush = new SolidColorBrush(Colors.Gold);
+            this.CardHolder.BorderThickness = new Thickness(5);
+        }
 
 
         public ProductsCard()
         {
             InitializeComponent();
+            CardLayout.DataContext = this;
         }
     }
 }

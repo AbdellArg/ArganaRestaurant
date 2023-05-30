@@ -7,17 +7,33 @@
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <None Remove="Data\ProductsImages\Couscous1.png" />
+	  <None Remove="Data\ProductsImages\Plate1.png" />
+	  <None Remove="Data\ProductsImages\Plate2.png" />
+	  <None Remove="Data\ProductsImages\Tajine.png" />
+	  <None Remove="Data\ProductsImages\Tajine2.png" />
+	  <None Remove="Data\ProductsImages\Tea.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Data\ProductsImages\Plate1.png" />
+	  <Resource Include="Data\ProductsImages\Plate2.png" />
+	  <Resource Include="Data\ProductsImages\Tajine.png" />
+	  <Resource Include="Data\ProductsImages\Tajine2.png" />
+	  <Resource Include="Data\ProductsImages\Tea.jpg" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<Folder Include="Models\" />
 		<Folder Include="ViewModels\" />
 		<Folder Include="Views\" />
-		<Folder Include="Styles\" />
 		<Folder Include="Ressources\" />
-		<Folder Include="Data\" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Data\ProductsImages\Couscous1.png" />
 		<Resource Include="Data\ProductsImages\Dish.png" />
 		<Resource Include="Ressources\logo.png" />
 	</ItemGroup>

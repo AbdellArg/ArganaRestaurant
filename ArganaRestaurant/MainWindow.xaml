@@ -14,7 +14,7 @@
     </Window.Triggers>
     
 
-    <Border x:Name="MainBackground" CornerRadius="10" MouseDown="MainBackground_MouseDown" MouseLeftButtonDown="MainBackground_MouseLeftButtonDown" >
+    <Border x:Name="MainContainer" CornerRadius="10" MouseDown="MainBackground_MouseDown" MouseLeftButtonDown="MainBackground_MouseLeftButtonDown" >
         <Border.Background>
             <!--<RadialGradientBrush>
                 <GradientStop Color="White" Offset="0.336"/>
@@ -49,64 +49,71 @@
                         <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5" />
                     </StackPanel>
 
-                    <Button Grid.Row="2" Content="Ausloggen" Style="{StaticResource ProButtonStyle}"/>
+                    <Button Grid.Row="2" Content="Ausloggen" Style="{StaticResource ProButtonStyle}" />
 
                 </Grid>
             </Border>
-            
-            <Border Grid.Column="1" Margin="60" CornerRadius="20,20,20,20">
-                <Border.Background>
-                    <SolidColorBrush Color="#FFA0A0A0" Opacity="1"/>
-                </Border.Background>
 
-                <ListBox x:Name="ProductsList">
-                </ListBox>
+            <Border Grid.Column="1">
+                <Border Margin="60" CornerRadius="20,20,20,20">
+                    <Border.Background>
+                        <SolidColorBrush Color="#FFA0A0A0" Opacity="0.5"/>
+                    </Border.Background>
 
-                
-                <!--<ListView Background="Transparent" BorderThickness="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ToolBar Height="100" Width="100"/>
-                </ListView>-->
 
-                <!--<Canvas Height="240" Width="150">
-                    
-                    <Border Panel.ZIndex="500" HorizontalAlignment="Center" Width="150">
-                        <Ellipse  Height="115" Width="115" Margin="10" >
-                            <Ellipse.Fill>
-                                <ImageBrush Stretch="Fill" Opacity="1" ImageSource="/Dish.png"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </Border>
+                    <ListBox x:Name="ProductsList" Template="{DynamicResource ProductsListBoxTemplate}" Width="650" Height="540" Background="#FF515050" BorderThickness="0" >
+                        <ListBox.Style>
+                            <Style/>
+                        </ListBox.Style>
 
-                    <Grid Panel.ZIndex="100" Height="180" Width="150" Canvas.Top="60" Margin="0" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <components:ProductsCard Titel="{Binding Path=Titel}" ImageURI="{Binding Path=ImageURI}" Price="{Binding Path=Price}"  />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
 
-                        <Border CornerRadius="15" >
-                            <Border.Background>
-                                <SolidColorBrush Color="#FFEDEDED" Opacity="0.993" />
-                            </Border.Background>
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="6" Direction="10"
-                                                  Opacity="0.5" RenderingBias="Performance"/>
-                            </Border.Effect>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel MaxWidth="600" HorizontalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Height" Value="240"/>
+                                <Setter Property="Width" Value="170"/>
+                                <Setter Property="Margin" Value="10 5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border x:Name="Bd"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    Background="{TemplateBinding Background}" 
+                                                    Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsMouseOver" Value="True"/>
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background" Value="transparent"/>
+                                                    <Setter Property="BorderBrush" TargetName="Bd" Value="transparent"/>
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
 
-                            <Canvas Margin="0 70 0 0" >
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
 
-                                <TextBlock Text="Fish Fingers Soupe mit Käse" Canvas.Top="1" FontFamily="Corbel" FontSize="14" Width="150" Padding="10" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" LineHeight="20" FontWeight="Heavy" TextWrapping="Wrap" />
 
-                                <Label Canvas.Bottom="15" Canvas.Left="8" FontFamily="Arial Black" FontSize="15" Foreground="#354f52" Content="7.5 €" />
-
-                                <Button x:Name="AddToOrders" Canvas.Bottom="15" Canvas.Right="10" Height="30" Width="70" Cursor="Hand" />
-
-                            </Canvas>
-
-                        </Border>
-                    </Grid>
-
-                </Canvas>-->
+                </Border>
             </Border>
         </Grid>
 
