@@ -2,33 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Colors -->
-
-    <!-- Background Colors -->
-    <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#F3F5F9"/>
-    <SolidColorBrush x:Key="SecundaryBackgroundColor" Color="#FFFFFF"/>
-
-    <!-- Primary Colors -->
-    <SolidColorBrush x:Key="PrimaryBlueColor" Color="#496FFF"/>
-    <SolidColorBrush x:Key="PrimaryGrayColor" Color="#64677A"/>
-
-    <!-- Secundary Colors -->
-    <SolidColorBrush x:Key="SecundaryBlueColor" Color="#496FFF"/>
-    <SolidColorBrush x:Key="SecundaryGrayColor" Color="#CECECE"/>
-
-    <!-- Tertiary Colors -->
-    <SolidColorBrush x:Key="TertiaryBlueColor" Color="#C2D1FC"/>
-
-    <!-- BorderBrush Colors -->
-    <SolidColorBrush x:Key="BorderBrushColor" Color="#233DC7"/>
-
-    <!-- Text Colors -->
-    <SolidColorBrush x:Key="PrimaryTextColor" Color="#14181D"/>
-    <SolidColorBrush x:Key="ProTextColor" Color="#FFFFFF"/>
-
-
-    <!-- Emoji Border Colors -->
-    <SolidColorBrush x:Key="PrimaryEmojiColor" Color="#F3F3F3" />
-    <SolidColorBrush x:Key="PrimaryBlueEmojiColor" Color="#9FB1F9" Opacity=".5"/>
+    
+    <!-- Main Colors Palette -->
+    <SolidColorBrush x:Key="PaletteLeighter" Color="#FEF7DC"/>
+    <SolidColorBrush x:Key="PaletteLeight" Color="#E6DDC6"/>
+    <SolidColorBrush x:Key="PaletteDark" Color="#C2B8A3"/>
+    <SolidColorBrush x:Key="PaletteDarker" Color="#A19882"/>
 
     <!-- Button Colors -->
     <SolidColorBrush x:Key="ProButtonColor" Color="#FFFFFF"/>

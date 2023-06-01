@@ -26,50 +26,52 @@ namespace ArganaRestaurant
         {
             InitializeComponent();
 
+            
+
             var Products = new List<ProductsCard>();
 
             ProductsCard p1 = new()
             {
                 Titel = "Marokkanischers Couscous Veggie",
                 Price = "23 €",
-                ImageURI = new Uri("Data/ProductsImages/Couscous1.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Couscous1.png", UriKind.Relative)
             };
             
             ProductsCard p2 = new()
             {
                 Titel = "Fish Fingers Mit Käse",
                 Price = "15 €",
-                ImageURI = new Uri("Data/ProductsImages/Dish.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Dish.png", UriKind.Relative)
             };
             ProductsCard p3 = new()
             {
                 Titel = "Plate1 Chicken Wings",
                 Price = "8 €",
-                ImageURI = new Uri("Data/ProductsImages/Plate1.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Plate1.png", UriKind.Relative)
             };
             ProductsCard p4 = new()
             {
                 Titel = "Plate2 Lahm Steacks Mit Salad",
                 Price = "7.5 €",
-                ImageURI = new Uri("Data/ProductsImages/Plate2.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Plate2.png", UriKind.Relative)
             };
             ProductsCard p5 = new()
             {
                 Titel = "Tajine l7amm wl Bar9o9",
                 Price = "15 €",
-                ImageURI = new Uri("Data/ProductsImages/Tajine.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Tajine.png", UriKind.Relative)
             };
             ProductsCard p6 = new()
             {
                 Titel = "Tajine GemüsenMischung Veggie",
                 Price = "12 €",
-                ImageURI = new Uri("Data/ProductsImages/Tajine2.png", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Tajine2.png", UriKind.Relative)
             };
             ProductsCard p7 = new()
             {
                 Titel = "Marokkanischer MinzenTea",
                 Price = "4.5 €",
-                ImageURI = new Uri("Data/ProductsImages/Tea.jpg", UriKind.Relative)
+                ImageURI = new Uri("../../Data/ProductsImages/Tea.jpg", UriKind.Relative)
             };
             Products.Add(p1);
             Products.Add(p2);
