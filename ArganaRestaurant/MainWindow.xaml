@@ -12,16 +12,12 @@
     </Window.Resources>
     <Window.Triggers>
     </Window.Triggers>
-    
 
-    <Border x:Name="MainContainer" CornerRadius="10" MouseDown="MainBackground_MouseDown" MouseLeftButtonDown="MainBackground_MouseLeftButtonDown" >
-        <Border.Background>
-            <!--<RadialGradientBrush>
-                <GradientStop Color="White" Offset="0.336"/>
-                <GradientStop Color="#FFBDBDBD" Offset="0.858"/>
-            </RadialGradientBrush>-->
-            <SolidColorBrush Color="#fff" />
-        </Border.Background>
+
+    <Border x:Name="MainContainer" CornerRadius="10"
+            MouseDown="MainBackground_MouseDown" 
+            MouseLeftButtonDown="MainBackground_MouseLeftButtonDown"
+            Background="#F5F5F5" >
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -29,8 +25,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#354f52" BorderBrush="Transparent" >
-                
+            <Border Grid.Column="0" Background="{DynamicResource PaletteDarker}" BorderBrush="Transparent" >
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="170"/>
@@ -55,9 +51,10 @@
             </Border>
 
             <Border Grid.Column="1">
-                <Border Margin="60" Padding="20" CornerRadius="20,20,20,20">
+                <Border Margin="60" Padding="20" 
+                        CornerRadius="20,20,20,20">
                     <Border.Background>
-                        <SolidColorBrush Color="#fff" Opacity="0.5"/>
+                        <SolidColorBrush Color="#FF454545" Opacity="0.2"/>
                     </Border.Background>
 
 
@@ -73,7 +70,7 @@
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <components:ProductsCard Titel="{Binding Path=Titel}" ImageURI="{Binding Path=ImageURI}" Price="{Binding Path=Price}"  />
+                                <components:ProductsCard Titel="{Binding Path=Titel}" ImageURI="{Binding Path=ImageURI}" Price="{Binding Path=Price}" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 

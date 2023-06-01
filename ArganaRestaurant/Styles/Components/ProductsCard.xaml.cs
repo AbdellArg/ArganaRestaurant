@@ -72,5 +72,10 @@ namespace ArganaRestaurant.Styles.Components
             InitializeComponent();
             CardLayout.DataContext = this;
         }
+
+        private void AddToOrders_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddToOrders.Visibility = Visibility.Hidden;
+        }
     }
 }

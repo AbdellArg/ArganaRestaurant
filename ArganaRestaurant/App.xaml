@@ -11,7 +11,11 @@
                 <ResourceDictionary Source="Styles/POSStyle.xaml"  />
                 <ResourceDictionary Source="Styles/ProductsListBoxStyle.xaml"  />
             </ResourceDictionary.MergedDictionaries>
+            
+        <FontFamily x:Key="Nunito">./Ressources/Fonts/Nunito-Regular.ttf#Nunito</FontFamily>
+            
         </ResourceDictionary>
+
 
     </Application.Resources>
 </Application>

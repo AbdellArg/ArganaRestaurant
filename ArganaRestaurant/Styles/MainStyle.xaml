@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Colors -->
-    
+
+    <SolidColorBrush x:Key="MainColor" Color="#354f52"/>
+
     <!-- Main Colors Palette -->
     <SolidColorBrush x:Key="PaletteLeighter" Color="#FEF7DC"/>
     <SolidColorBrush x:Key="PaletteLeight" Color="#E6DDC6"/>
