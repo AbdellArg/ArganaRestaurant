@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\App.xaml
-6-1156520298
+7-2110049572
 
-5-216950496
+8-1279222672
 194101785492
-MainWindow.xaml;Styles\Components\ProductsCard.xaml;Styles\MainStyle.xaml;Styles\POSStyle.xaml;Styles\ProductsListBoxStyle.xaml;Views\Dashboard.xaml;
+MainWindow.xaml;Ressources\Styles\Components\ProductsCard.xaml;Ressources\Styles\MainStyle.xaml;Ressources\Styles\POSStyle.xaml;Ressources\Styles\ProductsListBoxStyle.xaml;Views\Dashboard.xaml;Views\ProductsBoxView.xaml;
 
 False
 

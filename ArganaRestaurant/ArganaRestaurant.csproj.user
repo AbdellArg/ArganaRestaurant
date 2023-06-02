@@ -7,10 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Styles\Components\ProductsCard.xaml.cs">
+    <Compile Update="Ressources\Styles\Components\ProductsCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Dashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ProductsBoxView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -18,19 +21,22 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\Components\ProductsCard.xaml">
+    <Page Update="Ressources\Styles\Components\ProductsCard.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\MainStyle.xaml">
+    <Page Update="Ressources\Styles\MainStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\POSStyle.xaml">
+    <Page Update="Ressources\Styles\POSStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\ProductsListBoxStyle.xaml">
+    <Page Update="Ressources\Styles\ProductsListBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Dashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ProductsBoxView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

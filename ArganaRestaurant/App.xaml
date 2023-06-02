@@ -7,9 +7,9 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/MainStyle.xaml" />
-                <ResourceDictionary Source="Styles/POSStyle.xaml"  />
-                <ResourceDictionary Source="Styles/ProductsListBoxStyle.xaml"  />
+                <ResourceDictionary Source="Ressources/Styles/MainStyle.xaml" />
+                <ResourceDictionary Source="Ressources/Styles/POSStyle.xaml"  />
+                <ResourceDictionary Source="Ressources/Styles/ProductsListBoxStyle.xaml"  />
             </ResourceDictionary.MergedDictionaries>
             
         <FontFamily x:Key="Nunito">./Ressources/Fonts/Nunito-Regular.ttf#Nunito</FontFamily>

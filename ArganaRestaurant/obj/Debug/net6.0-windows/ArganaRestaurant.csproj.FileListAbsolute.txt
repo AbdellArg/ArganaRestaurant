@@ -1,10 +1,5 @@
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ArganaRestaurant.csproj.AssemblyReference.cache
-C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\Components\ProductsCard.baml
-C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\MainStyle.baml
-C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\POSStyle.baml
-C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\ProductsListBoxStyle.baml
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Styles\Components\ProductsCard.g.cs
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Views\Dashboard.g.cs
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -28,3 +23,10 @@ C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-w
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ArganaRestaurant.dll
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ArganaRestaurant.genruntimeconfig.cache
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\ref\ArganaRestaurant.dll
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Ressources\Styles\Components\ProductsCard.baml
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Ressources\Styles\MainStyle.baml
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Ressources\Styles\ProductsListBoxStyle.baml
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Ressources\Styles\Components\ProductsCard.g.cs
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Ressources\Styles\POSStyle.baml
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Views\ProductsBoxView.g.cs
+C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\obj\Debug\net6.0-windows\Views\ProductsBoxView.baml

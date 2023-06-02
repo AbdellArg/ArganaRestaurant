@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="ArganaRestaurant.Ressources.Styles.Components.ProductCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ArganaRestaurant.Ressources.Styles.Components"
+             x:Name="root"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="160" Background="Transparent">
+
+    <Grid  Height="180" Width="160" HorizontalAlignment="Center">
+        <Canvas x:Name="CardLayout" Height="200" Width="160" Margin="0">
+
+            <Border Panel.ZIndex="500" HorizontalAlignment="Center" Canvas.Top="2" Width="160">
+                <Ellipse Height="90" Width="90" Margin="0"  >
+                    <Ellipse.Fill>
+                        <!--<ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}" TileMode="None"/>-->
+                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding ImageURI, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}} }" TileMode="None"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+
+            <Grid Panel.ZIndex="100" Height="140" Width="160" Canvas.Top="40" Margin="0" >
+
+                <Border x:Name="CardHolder" CornerRadius="25 25 10 10" BorderThickness="1.5" >
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
+                            <GradientStop Color="#A19882" Offset="0.1"/>
+                            <GradientStop Color="#C2B8A3" Offset="0.7"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.1,1" >
+                            <GradientStop Color="#354f52" Offset="0.2"/>
+                            <GradientStop Color="#FFD700" Offset="0.4"/>
+                            <GradientStop Color="#354f52" Offset="0.6"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+
+                    <!--<Border.Effect>
+                        <DropShadowEffect ShadowDepth="6" Direction="224"
+                                               Color="Red"    Opacity="0.5" RenderingBias="Quality"/>
+                    </Border.Effect>-->
+
+                    <Canvas Margin="0 50 0 0" >
+
+                        <TextBlock Text="{Binding Path=Titel, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}"
+                                   Canvas.Top="5" 
+                                   FontSize="14" 
+                                   Width="156" 
+                                   FontFamily="{StaticResource Nunito}"
+                                   Padding="4 0" 
+                                   TextAlignment="Center" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap" Foreground="Black" FontWeight="UltraBold" />
+                        <!--<TextBlock Text="{Binding Path=Titel, ElementName=root}"
+                                   Canvas.Top="1" 
+                                   FontFamily="Corbel" 
+                                   FontSize="14" 
+                                   Width="150" 
+                                   Padding="10" 
+                                   TextAlignment="Center" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   LineHeight="20" 
+                                   FontWeight="Heavy" 
+                                   TextWrapping="Wrap" />-->
+
+                        <Label x:Name="ItemPrice"
+                               Canvas.Bottom="5" 
+                               Canvas.Left="5" 
+                               FontSize="14" 
+                               Foreground="Black" 
+                               FontFamily="{StaticResource Nunito}"
+                               Content="{Binding Path=Price, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}" />
+                        <!--<Label Canvas.Bottom="15" 
+                               Canvas.Left="8" 
+                               FontFamily="Arial Black" 
+                               FontSize="15" 
+                               Foreground="Black" 
+                               Content="{Binding Path=Price, ElementName=root}" />-->
+
+                        <Button x:Name="AddToOrders" Canvas.Bottom="5"
+                                Canvas.Right="10" Height="30" Width="70"
+                                Cursor="Hand" Style="{StaticResource ProductCardButton}"
+                                Background="{StaticResource MainColor}"
+                                Visibility="Visible" Click="AddToOrders_Click" />
+
+
+                        <Border x:Name="ItemCountity" Canvas.Right="25" Canvas.Bottom="5" 
+                                Height="30" Width="110"
+                                Background="{StaticResource MainColor}" 
+                                CornerRadius="6"
+                                Visibility="Hidden">
+                            <Grid>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.ColumnSpan="3"
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    CornerRadius="20">
+                                    <Label FontFamily="{StaticResource Nunito}"
+                                           Content="{Binding Path=Totale, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}"
+                                           FontSize="18"
+                                           Foreground="White"/>
+                                </Border>
+
+
+                                <Button Background="{StaticResource MainColor}"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Template="{StaticResource PlusMinusButtons}"
+                                        Click="MinusButton_Click">
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.Resources>
+                                                <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                            </Grid.Resources>
+                                            <Path Height="3"
+                                                  Width="15"
+                                                  Stretch="Fill" 
+                                                  Data="M 467.4 212.4 H 42.9 c -24.2 0 -43.7 19.6 -43.7 43.7 s 19.6 43.7 43.7 43.7 h 424.5 c 24.2 0 43.7 -19.6 43.7 -43.7 S 491.5 212.4 467.4 212.4 Z" />
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Background="{StaticResource MainColor}"
+                                        Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Template="{StaticResource PlusMinusButtons}"
+                                        Click="PlusButton_Click">
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.Resources>
+                                                <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                            </Grid.Resources>
+                                            <Path Height="15"
+                                                  Width="15"
+                                                  Stretch="Fill" 
+                                                  Data="M 468.3 212.7 H 305.2 v -169 c 0 -24.2 -19.6 -43.8 -43.8 -43.8 c -24.2 0 -43.8 19.6 -43.8 43.8 v 169 h -174 C 19.6 212.7 0 232.3 0 256.5 c 0 24.2 19.6 43.8 43.8 43.8 h 174 v 168 c 0 24.2 19.6 43.8 43.8 43.8 c 24.2 0 43.8 -19.6 43.8 -43.8 v -168 h 163.1 c 24.2 0 43.8 -19.6 43.8 -43.8 C 512 232.3 492.5 212.7 468.3 212.7 Z" />
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </Border>
+
+                    </Canvas>
+
+                </Border>
+            </Grid>
+
+        </Canvas>
+
+    </Grid>
+</UserControl>

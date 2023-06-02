@@ -20,12 +20,8 @@
 
 
 	<ItemGroup>
-		<Folder Include="Models\" />
-		<Folder Include="ViewModels\" />
-		<Folder Include="Views\" />
 		<Folder Include="Data\" />
-		<Folder Include="Ressources\" />
-		<Folder Include="Styles\" />
+		<Folder Include="Ressources\Styles\" />
 	</ItemGroup>
 
 	<ItemGroup>

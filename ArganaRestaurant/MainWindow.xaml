@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:components="clr-namespace:ArganaRestaurant.Styles.Components"
+        xmlns:components="clr-namespace:ArganaRestaurant.Ressources.Styles.Components"
+        xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1080" Background="Transparent" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen" WindowStyle="None">
@@ -50,40 +51,19 @@
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1">
-                <Border Margin="60" Padding="20" 
-                        CornerRadius="20,20,20,20">
-                    <Border.Background>
-                        <SolidColorBrush Color="#FF454545" Opacity="0.2"/>
-                    </Border.Background>
+            <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                        Height="600"
+                        Width="580">
 
+                <Frame Height="500" Source="Views/ProductsBoxView.xaml" />
 
-                    <ListBox x:Name="ProductsList" 
-                             Template="{DynamicResource ProductsListBoxTemplate}" 
-                             ItemContainerStyle="{DynamicResource ProductsListItemTemplate}"
-                             Width="650" Height="540" 
-                             Background="Transparent" 
-                             BorderThickness="0" >
-                        <ListBox.Style>
-                            <Style/>
-                        </ListBox.Style>
+                <Button Content="test"/>
+                <Label FontSize="20" Content="test"></Label>
+            </StackPanel>
 
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <components:ProductsCard Titel="{Binding Path=Titel}" ImageURI="{Binding Path=ImageURI}" Price="{Binding Path=Price}" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel MaxWidth="600" HorizontalAlignment="Center" />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                    </ListBox>
-
-
-                </Border>
-            </Border>
+            
         </Grid>
 
     </Border>
