@@ -1,10 +1,13 @@
 ﻿using ArganaRestaurant.Models;
 using ArganaRestaurant.ViewModels;
+using ArganaRestaurant.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ArganaRestaurant
@@ -16,9 +19,7 @@ namespace ArganaRestaurant
         public MainWindow()
         {
             InitializeComponent();
-            //ProductsList.ItemsSource = Product.LoadProducts();
-            //ProductsBoxViewModel ProductsviewModel = new ProductsBoxViewModel();
-            //ProductsList.ItemsSource = ProductsviewModel.Products;
+            
         }
 
 
@@ -53,5 +54,9 @@ namespace ArganaRestaurant
         }
 
         
+
+        //ICollectionView view = CollectionViewSource.GetDefaultView(ItemsSource);
+        //view.Refresh();
+
     }
 }

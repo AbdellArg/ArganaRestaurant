@@ -23,6 +23,9 @@ namespace ArganaRestaurant.Views
         public ProductsBoxView()
         {
             InitializeComponent();
+            //ProductsList.ItemsSource = Product.LoadProducts();
+            //ProductsBoxViewModel ProductsviewModel = new ProductsBoxViewModel();
+            //ProductsList.ItemsSource = ProductsviewModel.Products;
         }
     }
 }

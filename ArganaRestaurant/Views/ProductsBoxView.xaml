@@ -14,11 +14,7 @@
     </Page.DataContext>
 
     <Border>
-        <Border Margin="5" Padding="0" 
-                        CornerRadius="20,20,20,20">
-            <Border.Background>
-                <SolidColorBrush Color="Transparent"/>
-            </Border.Background>
+        <StackPanel Margin="5" Background="White">
 
 
             <ListBox x:Name="ProductsList"
@@ -27,11 +23,14 @@
                              Width="580" Height="500" 
                              Background="Transparent" 
                              BorderThickness="0"
-                             ItemsSource="{Binding Products}">
+                             ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <components:ProductCard Titel="{Binding Title}" ImageURI="{Binding Image}" Price="{Binding Price}" Totale="{Binding Quantity}" />
+                        <components:ProductCard Titel="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                ImageURI="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                Price="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                Totale="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
 
@@ -43,7 +42,20 @@
             </ListBox>
 
 
-        </Border>
+            <ListView Name="LV" ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Quantity}"/>
+                            <Label Content="{Binding Title}"/>
+                            <Label Content="{Binding Price}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackPanel>
 
     </Border>
 </Page>

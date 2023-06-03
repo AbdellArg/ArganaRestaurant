@@ -54,13 +54,11 @@
             <StackPanel Grid.Column="1"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                        Height="600"
-                        Width="580">
+                        Height="700"
+                        Width="600">
 
-                <Frame Height="500" Source="Views/ProductsBoxView.xaml" />
+                <Frame x:Name="ProductsView" Height="550" Source="Views/ProductsBoxView.xaml" />
 
-                <Button Content="test"/>
-                <Label FontSize="20" Content="test"></Label>
             </StackPanel>
 
             

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,9 +57,9 @@ namespace ArganaRestaurant.Models
         }
 
 
-        public static List<Product> LoadProducts()
+        public static BindingList<Product> LoadProducts()
         {
-            return new List<Product>
+            return new BindingList<Product>
             {
                 new Product { Title = "Marokkanischers Couscous Veggie", Price = 23, Image = new Uri("../../Data/ProductsImages/Couscous1.png", UriKind.Relative),ProductNr = 1},
                 new Product { Title = "Plate1 Chicken Wings", Price = 8, Image = new Uri("Data/ProductsImages/Plate1.png", UriKind.Relative),  ProductNr = 2},

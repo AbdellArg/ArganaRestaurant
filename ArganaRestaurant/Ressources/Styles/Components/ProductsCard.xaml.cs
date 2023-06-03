@@ -2,6 +2,7 @@
 using ArganaRestaurant.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -83,10 +84,12 @@ namespace ArganaRestaurant.Ressources.Styles.Components
             this.CardHolder.BorderThickness = new Thickness(5);
         }
 
+        Product CurrentItem;
 
         public ProductCard()
         {
             InitializeComponent();
+            //this.DataContext = this;
         }
 
         private void AddToOrders_Click(object sender, RoutedEventArgs e)
@@ -108,41 +111,28 @@ namespace ArganaRestaurant.Ressources.Styles.Components
                 this.ItemCountity.Visibility = Visibility.Hidden;
                 this.ItemPrice.Visibility = Visibility.Visible;
             }
+            Update();
         }
+
 
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
             this.Totale++;
-            ((Product)this.DataContext).Title = "test";
+            this.Titel = "test";
+            Update();
+            
+        }
+
+        public void Update()
+        {
+
+            CurrentItem = (Product)this.DataContext;
+            CurrentItem.Title = this.Titel;
+            CurrentItem.Quantity = this.Totale;
+            this.DataContext = CurrentItem;
             
         }
 
 
-        //public event PropertyChangedEventHandler? PropertyChanged;
-
-        //private static void OnQuantityChanged(
-        //DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    CustomerDetailView c = sender as CustomerDetailView;
-        //    if (c != null)
-        //    {
-        //        c.OnCustomerChanged();
-        //    }
-        //}
-        //private static void OnQuantityChangedCallBack(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    ProductCard p = sender as ProductCard;
-        //    if (p != null)
-        //    {
-        //        p.OnQuantityChanged();
-        //    }
-        //}
-
-        //protected virtual void OnQuantityChanged()
-        //{
-        //    // Grab related data.
-        //    // Raises INotifyPropertyChanged.PropertyChanged
-        //    OnPropertyChanged();
-        //}
     }
 }

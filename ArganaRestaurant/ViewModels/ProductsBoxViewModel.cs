@@ -1,11 +1,14 @@
 ﻿using ArganaRestaurant.Models;
+using ArganaRestaurant.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ArganaRestaurant.ViewModels
 {
@@ -18,9 +21,9 @@ namespace ArganaRestaurant.ViewModels
         //private Uri image;
         //private int quantity;
 
-        private List<Product> products;
+        private BindingList<Product> products;
 
-        public List<Product> Products
+        public BindingList<Product> Products
         {
             get => products;
             set
@@ -40,11 +43,13 @@ namespace ArganaRestaurant.ViewModels
         }
 
 
+
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
-        public void OnPropertyChanged([CallerMemberName] string name = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
 

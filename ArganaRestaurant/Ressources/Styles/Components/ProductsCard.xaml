@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:ArganaRestaurant.Ressources.Styles.Components"
+             xmlns:mdl="clr-namespace:ArganaRestaurant.Models"
              x:Name="root"
              mc:Ignorable="d" 
              d:DesignHeight="180" d:DesignWidth="160" Background="Transparent">
-
+    
     <Grid  Height="180" Width="160" HorizontalAlignment="Center">
         <Canvas x:Name="CardLayout" Height="200" Width="160" Margin="0">
 
@@ -15,7 +15,7 @@
                 <Ellipse Height="90" Width="90" Margin="0"  >
                     <Ellipse.Fill>
                         <!--<ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}" TileMode="None"/>-->
-                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding ImageURI, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}} }" TileMode="None"/>
+                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding ImageURI , ElementName=root}" TileMode="None"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </Border>
@@ -44,7 +44,7 @@
 
                     <Canvas Margin="0 50 0 0" >
 
-                        <TextBlock Text="{Binding Path=Titel, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}"
+                        <TextBlock Text="{Binding Path=Titel, ElementName=root}"
                                    Canvas.Top="5" 
                                    FontSize="14" 
                                    Width="156" 
@@ -73,7 +73,7 @@
                                FontSize="14" 
                                Foreground="Black" 
                                FontFamily="{StaticResource Nunito}"
-                               Content="{Binding Path=Price, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}" />
+                               Content="{Binding Path=Price, ElementName=root}" />
                         <!--<Label Canvas.Bottom="15" 
                                Canvas.Left="8" 
                                FontFamily="Arial Black" 
@@ -105,7 +105,7 @@
                                     VerticalAlignment="Center" 
                                     CornerRadius="20">
                                     <Label FontFamily="{StaticResource Nunito}"
-                                           Content="{Binding Path=Totale, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:ProductCard}}}"
+                                           Content="{Binding Path=Totale, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                            FontSize="18"
                                            Foreground="White"/>
                                 </Border>
