@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -15,10 +16,15 @@ namespace ArganaRestaurant
 
     public partial class MainWindow : Window
     {
+        //ProductsBoxViewModel viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
+            //viewModel = new ProductsBoxViewModel();
+            ////ProductsView.DataContext = viewModel;
+            //this.DataContext = viewModel;
+            //LV.ItemsSource = viewModel.Products;
             
         }
 
@@ -53,7 +59,22 @@ namespace ArganaRestaurant
             }
         }
 
-        
+
+
+        private void ProductsView_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            // We will pass the DataContext
+            var content = ProductsView.Content as FrameworkElement;
+            if (content == null)
+                return;
+            content.DataContext = ProductsView.DataContext;
+            var a = content.DataContext as ProductsBoxViewModel;
+            //var items = ProductsView.Content as ProductsBoxView;
+
+            //items.ProductsList.ItemsSource = a.Products;
+        }
+
+
 
         //ICollectionView view = CollectionViewSource.GetDefaultView(ItemsSource);
         //view.Refresh();

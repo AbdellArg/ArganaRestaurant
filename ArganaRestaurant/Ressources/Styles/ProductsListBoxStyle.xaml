@@ -36,9 +36,9 @@
 
     <!-- POS ProductsList ListBox Items Style -->
     <Style x:Key="ProductsListItemTemplate" TargetType="ListBoxItem">
-        <Setter Property="Height" Value="190"/>
-        <Setter Property="Width" Value="170"/>
-        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Width" Value="180"/>
+        <!--<Setter Property="Margin" Value="5"/>-->
         <Setter Property="Template">
             <Setter.Value>
 
@@ -52,14 +52,7 @@
                                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
+                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -67,7 +60,7 @@
     </Style>
 
 
-
+    <!-- Begin Region ScrollBar-->
     <!-- ScrollBar RepeatButtonTransparent Style -->
     <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -77,7 +70,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    <Rectangle Fill="{TemplateBinding Background}"
+                               Height="{TemplateBinding Height}"
+                               Width="{TemplateBinding Width}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -372,6 +367,6 @@
         </Style.Triggers>
     </Style>
 
-
+    <!-- End Region ScrollBar-->
 
 </ResourceDictionary>

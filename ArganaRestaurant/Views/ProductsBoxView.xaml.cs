@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArganaRestaurant.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,17 @@ namespace ArganaRestaurant.Views
         public ProductsBoxView()
         {
             InitializeComponent();
-            //ProductsList.ItemsSource = Product.LoadProducts();
-            //ProductsBoxViewModel ProductsviewModel = new ProductsBoxViewModel();
-            //ProductsList.ItemsSource = ProductsviewModel.Products;
+
+            //foreach (var item in ProductsviewModel.Products)
+            //{
+            //    ProductsList.
+            //}
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
         }
     }
 }

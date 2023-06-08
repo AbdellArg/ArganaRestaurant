@@ -4,159 +4,231 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mdl="clr-namespace:ArganaRestaurant.Models"
+             xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
              x:Name="root"
              mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="160" Background="Transparent">
-    
-    <Grid  Height="180" Width="160" HorizontalAlignment="Center">
-        <Canvas x:Name="CardLayout" Height="200" Width="160" Margin="0">
+             d:DesignHeight="190" d:DesignWidth="170" Background="Transparent">
+    <!--<UserControl.DataContext>
+        <VMs:ProductsViewModel />
+    </UserControl.DataContext>-->
 
-            <Border Panel.ZIndex="500" HorizontalAlignment="Center" Canvas.Top="2" Width="160">
-                <Ellipse Height="90" Width="90" Margin="0"  >
-                    <Ellipse.Fill>
-                        <!--<ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding Path=ImageURI, ElementName=root}" TileMode="None"/>-->
-                        <ImageBrush Stretch="Fill" Opacity="1" ImageSource="{Binding ImageURI , ElementName=root}" TileMode="None"/>
-                    </Ellipse.Fill>
-                </Ellipse>
+
+    <!-- This is a User Controll for the UI Presentation of our Products in the POS -->
+    <!-- I created this Product Card Holders, to use it as ListBox Item in "ProductsBoxView" -->
+
+    <Border x:Name="CardHolder" Loaded="CardHolder_Loaded" Background="#FFFFFF" CornerRadius="20 20 12 12" BorderThickness="0">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="10" Direction="-90" ShadowDepth="0" Opacity="0.3"/>
+        </Border.Effect>
+        <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.1,1" >
+                    <GradientStop Color="#354f52" Offset="0.2"/>
+                    <GradientStop Color="#FFD700" Offset="0.4"/>
+                    <GradientStop Color="#354f52" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+
+
+
+        <Grid  Height="190" Width="170" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+
+            <!-- Product's Image Section -->
+
+
+            <Border Grid.Row="0"
+                        Height="90"
+                        Width="170"
+                        CornerRadius="20 20 0 0">
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border.Background>
             </Border>
 
-            <Grid Panel.ZIndex="100" Height="140" Width="160" Canvas.Top="40" Margin="0" >
 
-                <Border x:Name="CardHolder" CornerRadius="25 25 10 10" BorderThickness="1.5" >
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" >
-                            <GradientStop Color="#A19882" Offset="0.1"/>
-                            <GradientStop Color="#C2B8A3" Offset="0.7"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.BorderBrush>
-                        <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.1,1" >
-                            <GradientStop Color="#354f52" Offset="0.2"/>
-                            <GradientStop Color="#FFD700" Offset="0.4"/>
-                            <GradientStop Color="#354f52" Offset="0.6"/>
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
+            <!-- This Border to make the Images Sides darker -->
+            <!-- just for having a good Constract with white Background not more -->
+            <Border Grid.Row="0"
+                    Height="90"
+                        Width="170"
+                        CornerRadius="20 20 0 0">
+                <Border.Background>
+                    <RadialGradientBrush Opacity="0.3">
+                        <GradientStop Color="#FF101010" Offset="0.95"/>
+                        <GradientStop Color="#00101010" Offset="0.6"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
 
-                    <!--<Border.Effect>
-                        <DropShadowEffect ShadowDepth="6" Direction="224"
-                                               Color="Red"    Opacity="0.5" RenderingBias="Quality"/>
-                    </Border.Effect>-->
+            <Grid x:Name="VeganIcon" Visibility="Visible" Grid.Row="0" 
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="0 5 5 0">
+                
+                <Ellipse Width="30" Height="30" Panel.ZIndex="100">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="../../Vegan.png" Stretch="Fill" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            
+                <Ellipse Width="30" Height="30" Fill="#FFFFFF" Panel.ZIndex="50"/>
+                
+            </Grid>
+            
+            
 
-                    <Canvas Margin="0 50 0 0" >
+            <Border Grid.Row="1"
+                    Width="160"
+                    Height="50"
+                    VerticalAlignment="Center">
 
-                        <TextBlock Text="{Binding Path=Titel, ElementName=root}"
-                                   Canvas.Top="5" 
-                                   FontSize="14" 
-                                   Width="156" 
-                                   FontFamily="{StaticResource Nunito}"
-                                   Padding="4 0" 
-                                   TextAlignment="Center" 
-                                   VerticalAlignment="Center" 
-                                   HorizontalAlignment="Center"
-                                   TextWrapping="Wrap" Foreground="Black" FontWeight="UltraBold" />
-                        <!--<TextBlock Text="{Binding Path=Titel, ElementName=root}"
-                                   Canvas.Top="1" 
-                                   FontFamily="Corbel" 
-                                   FontSize="14" 
-                                   Width="150" 
-                                   Padding="10" 
-                                   TextAlignment="Center" 
-                                   VerticalAlignment="Center" 
-                                   HorizontalAlignment="Center" 
-                                   LineHeight="20" 
-                                   FontWeight="Heavy" 
-                                   TextWrapping="Wrap" />-->
+                <TextBlock Width="160"
+                       Height="50"
+                        Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
+                        FontSize="13"
+                        FontFamily="{StaticResource SourceSansPro}"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap"
+                        Foreground="#FF404040"
+                        FontWeight="SemiBold"
+                        Padding="0 10 0 0" LineHeight="6"/>
 
-                        <Label x:Name="ItemPrice"
-                               Canvas.Bottom="5" 
-                               Canvas.Left="5" 
-                               FontSize="14" 
-                               Foreground="Black" 
-                               FontFamily="{StaticResource Nunito}"
-                               Content="{Binding Path=Price, ElementName=root}" />
-                        <!--<Label Canvas.Bottom="15" 
-                               Canvas.Left="8" 
-                               FontFamily="Arial Black" 
-                               FontSize="15" 
-                               Foreground="Black" 
-                               Content="{Binding Path=Price, ElementName=root}" />-->
+            </Border>
 
-                        <Button x:Name="AddToOrders" Canvas.Bottom="5"
-                                Canvas.Right="10" Height="30" Width="70"
-                                Cursor="Hand" Style="{StaticResource ProductCardButton}"
+
+            <Grid Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Left">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="15"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                            x:Name="ItemPrice"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            FontWeight="Regular"
+                            FontSize="15"
+                            Padding="0 2 0 0"
+                            FontFamily="{StaticResource SourceSansPro}"
+                            Content="{Binding Price, UpdateSourceTrigger=PropertyChanged}" 
+                           Foreground="#000000" />
+                    <Label Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            FontWeight="Bold"
+                            FontSize="11"
+                            Padding="2 0 0 0"
+                            FontFamily="{StaticResource Nunito}"
+                            Content="€" Foreground="#FF155A08" />
+                </Grid>
+
+                <!-- Button to Add the Product to the Order List-->
+                <Button Grid.Column="1" x:Name="AddToOrders"
+                        Height="26" Width="70"
+                        Cursor="Hand" 
+                        Style="{StaticResource ProductCardButton}"
+                        HorizontalAlignment="Left"
+                        Margin="5 0 0 0"
+                        Visibility="Visible" Click="AddToOrders_Click" >
+                </Button>
+
+
+                <!-- Product's Quantity Section -->
+                <!-- Here to select/modify the Quantity of this Product in the Order -->
+                <Border Grid.Column="1" x:Name="ItemCountity"
+                        Height="23" Width="70"
+                        Visibility="Hidden"
+                        HorizontalAlignment="Left"
+                        Margin="5 0 0 0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="14" Direction="-91" Opacity="0.5" ShadowDepth="1"/>
+                    </Border.Effect>
+
+
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <!-- Here the to change the Order Item's Quantity -->
+                        <Border Width="70" Height="23"
                                 Background="{StaticResource MainColor}"
-                                Visibility="Visible" Click="AddToOrders_Click" />
+                                CornerRadius="12"
+                                Grid.ColumnSpan="3"
+                                HorizontalAlignment="Center" >
+                            <Border 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Top"
+                                Margin="0 -1 0 0">
+                                <Label FontFamily="{StaticResource SourceSansPro}"
+                                   FontWeight="Regular"
+                                   Content="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   FontSize="14"
+                                   Foreground="#FFFFFF"/>
 
+                            </Border>
 
-                        <Border x:Name="ItemCountity" Canvas.Right="25" Canvas.Bottom="5" 
-                                Height="30" Width="110"
-                                Background="{StaticResource MainColor}" 
-                                CornerRadius="6"
-                                Visibility="Hidden">
-                            <Grid>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="35"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="35"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Border Grid.ColumnSpan="3"
-                                    HorizontalAlignment="Center" 
-                                    VerticalAlignment="Center" 
-                                    CornerRadius="20">
-                                    <Label FontFamily="{StaticResource Nunito}"
-                                           Content="{Binding Path=Totale, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                           FontSize="18"
-                                           Foreground="White"/>
-                                </Border>
-
-
-                                <Button Background="{StaticResource MainColor}"
-                                        Grid.Column="0"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Template="{StaticResource PlusMinusButtons}"
-                                        Click="MinusButton_Click">
-                                    <Button.Content>
-                                        <Grid>
-                                            <Grid.Resources>
-                                                <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
-                                            </Grid.Resources>
-                                            <Path Height="3"
-                                                  Width="15"
-                                                  Stretch="Fill" 
-                                                  Data="M 467.4 212.4 H 42.9 c -24.2 0 -43.7 19.6 -43.7 43.7 s 19.6 43.7 43.7 43.7 h 424.5 c 24.2 0 43.7 -19.6 43.7 -43.7 S 491.5 212.4 467.4 212.4 Z" />
-                                        </Grid>
-                                    </Button.Content>
-                                </Button>
-
-                                <Button Background="{StaticResource MainColor}"
-                                        Grid.Column="2"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Template="{StaticResource PlusMinusButtons}"
-                                        Click="PlusButton_Click">
-                                    <Button.Content>
-                                        <Grid>
-                                            <Grid.Resources>
-                                                <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
-                                            </Grid.Resources>
-                                            <Path Height="15"
-                                                  Width="15"
-                                                  Stretch="Fill" 
-                                                  Data="M 468.3 212.7 H 305.2 v -169 c 0 -24.2 -19.6 -43.8 -43.8 -43.8 c -24.2 0 -43.8 19.6 -43.8 43.8 v 169 h -174 C 19.6 212.7 0 232.3 0 256.5 c 0 24.2 19.6 43.8 43.8 43.8 h 174 v 168 c 0 24.2 19.6 43.8 43.8 43.8 c 24.2 0 43.8 -19.6 43.8 -43.8 v -168 h 163.1 c 24.2 0 43.8 -19.6 43.8 -43.8 C 512 232.3 492.5 212.7 468.3 212.7 Z" />
-                                        </Grid>
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
                         </Border>
 
-                    </Canvas>
+
+                        <Button Grid.Column="0"
+                                Style="{StaticResource PlusMinusButtons}"
+                                Click="MinusButton_Click">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.Resources>
+                                        <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                    </Grid.Resources>
+                                    <Path Height="1.5"
+                                          Width="8"
+                                          Stretch="Fill"
+                                          Data="M 467.4 212.4 H 42.9 c -24.2 0 -43.7 19.6 -43.7 43.7 s 19.6 43.7 43.7 43.7 h 424.5 c 24.2 0 43.7 -19.6 43.7 -43.7 S 491.5 212.4 467.4 212.4 Z" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Style="{StaticResource PlusMinusButtons}"
+                                Click="PlusButton_Click">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.Resources>
+                                        <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                    </Grid.Resources>
+                                    <Path Height="8"
+                                        Width="8"
+                                        Stretch="Fill"
+                                        Data="M 468.3 212.7 H 305.2 v -169 c 0 -24.2 -19.6 -43.8 -43.8 -43.8 c -24.2 0 -43.8 19.6 -43.8 43.8 v 169 h -174 C 19.6 212.7 0 232.3 0 256.5 c 0 24.2 19.6 43.8 43.8 43.8 h 174 v 168 c 0 24.2 19.6 43.8 43.8 43.8 c 24.2 0 43.8 -19.6 43.8 -43.8 v -168 h 163.1 c 24.2 0 43.8 -19.6 43.8 -43.8 C 512 232.3 492.5 212.7 468.3 212.7 Z" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
 
                 </Border>
+
             </Grid>
 
-        </Canvas>
 
-    </Grid>
+        </Grid>
+    </Border>
+
+
 </UserControl>

@@ -1,8 +1,10 @@
 ﻿using ArganaRestaurant.Models;
+using ArganaRestaurant.Ressources.Styles.Components;
 using ArganaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,18 +14,18 @@ using System.Windows;
 
 namespace ArganaRestaurant.ViewModels
 {
-    class ProductsBoxViewModel : INotifyPropertyChanged
+    class ProductsBoxViewModel : ViewModelBase
     {
 
-        //private int productNr;
-        //private string title;
-        //private double price;
-        //private Uri image;
-        //private int quantity;
 
-        private BindingList<Product> products;
 
-        public BindingList<Product> Products
+        private BindingList<ProductsViewModel> products;
+
+        private BindingList<CategoriesViewModel> categories;
+
+
+
+        public BindingList<ProductsViewModel> Products
         {
             get => products;
             set
@@ -37,66 +39,66 @@ namespace ArganaRestaurant.ViewModels
         }
 
 
-        public ProductsBoxViewModel()
+        public BindingList<CategoriesViewModel> Categories
         {
-            Products = Product.LoadProducts();
+            get { return categories; }
+            set { categories = value; }
         }
 
 
 
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public ProductsBoxViewModel()
+        {
+            Products = LoadProducts();
+            Products.ListChanged += Products_ListChanged;
+
+            Categories = LoadCategories();
+ 
+        }
+
+        private void Products_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            BindingList<ProductsViewModel>? prods = sender as BindingList<ProductsViewModel>;
+            //Products = prods;
+            OnPropertyChanged(nameof(Products));
+            //this.Products = Prods;
+        }
 
 
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public BindingList<ProductsViewModel> FilterByIsVegan()
+        {
+            var FiltredList = (from product in Products where product.IsVegan == false  select product).ToList();
+
+            return new BindingList<ProductsViewModel>(FiltredList);
+        }
 
 
+        public static BindingList<ProductsViewModel> LoadProducts()
+        {
+            return new BindingList<ProductsViewModel>
+            {
+                new ProductsViewModel { Title = "Marokkanischers Couscous Veggie", Price = 23, Image = new Uri("../../Data/ProductsImages/Muster1.jpg", UriKind.Relative),ProductNr = 1, IsVegan = true},
+                new ProductsViewModel { Title = "Plate1 Chicken Wings", Price = 8, Image = new Uri("Data/ProductsImages/Muster2.jpg", UriKind.Relative),  ProductNr = 2, IsVegan = true},
+                new ProductsViewModel { Title = "Fish Fingers Mit Käse", Price = 15, Image = new Uri("../../Data/ProductsImages/Muster3.jpg", UriKind.Relative), ProductNr = 3, IsVegan = false},
+                new ProductsViewModel { Title = "Plate2 Lahm Steacks Mit Salad",Price = 7.5, Image = new Uri("../Data/ProductsImages/Muster4.jpg", UriKind.Relative), ProductNr = 4, IsVegan = true},
+                new ProductsViewModel { Title = "Tajine l7amm wl Bar9o9", Price = 15, Image = new Uri("../../Data/ProductsImages/Muster5.jpg", UriKind.Relative), ProductNr = 5 , IsVegan = false},
+                new ProductsViewModel { Title = "Tajine GemüsenMischung Veggie", Price = 12, Image = new Uri("../../Data/ProductsImages/Muster6.jpg", UriKind.Relative), ProductNr = 6, IsVegan = true },
+                new ProductsViewModel { Title = "Marokkanischer MinzenTea", Price = 4.5, Image = new Uri("../../Data/ProductsImages/Muster7.jpg", UriKind.Relative), ProductNr = 7, IsVegan = false }
+            };
+        }
 
-
-        //public ProductsBoxViewModel(int ProductNr, string Title, double Price, Uri Image)
-        //{
-        //    productNr = ProductNr;
-        //    title = Title;
-        //    price = Price;
-        //    image = Image;
-        //    quantity = 0;
-        //}
-
-        //public int ProductNr
-        //{
-        //    get { return productNr; }
-        //    set { productNr = value; }
-        //}
-
-        //public string Title
-        //{
-        //    get { return title; }
-        //    set { title = value; }
-        //}
-
-        //public double Price
-        //{
-        //    get { return price; }
-        //    set { price = value; }
-        //}
-
-
-        //public Uri Image
-        //{
-        //    get { return image; }
-        //    set { image = value; }
-        //}
-
-
-        //public int Quantity
-        //{
-        //    get { return quantity; }
-        //    set { quantity = value; }
-        //}
-
-
-
+        public BindingList<CategoriesViewModel> LoadCategories()
+        {
+            return new BindingList<CategoriesViewModel>
+            {
+                new CategoriesViewModel { Id = 1, Name = "Drinks" },
+                new CategoriesViewModel { Id = 2, Name = "Vegies" },
+                new CategoriesViewModel { Id = 3, Name = "Breakfasts" },
+                new CategoriesViewModel { Id = 4, Name = "Meals" }
+            };
+        }
 
 
 

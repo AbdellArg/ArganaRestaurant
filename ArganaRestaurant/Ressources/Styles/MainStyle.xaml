@@ -2,8 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Colors -->
+    <Color x:Key="MainColorAsColor">#354f52</Color>
+    <Color x:Key="SecondColorAsColor">#FFB84C</Color>
+    <SolidColorBrush x:Key="MainColor" Color="{StaticResource MainColorAsColor}"/>
+    <SolidColorBrush x:Key="SecondColor" Color="{StaticResource SecondColorAsColor}"/>
 
-    <SolidColorBrush x:Key="MainColor" Color="#354f52"/>
+    <FontFamily x:Key="SourceSansPro">./Fonts/#Source Sans Pro</FontFamily>
 
     <!-- Main Colors Palette -->
     <SolidColorBrush x:Key="PaletteLeighter" Color="#FEF7DC"/>

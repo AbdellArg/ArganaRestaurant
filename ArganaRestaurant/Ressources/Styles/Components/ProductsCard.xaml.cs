@@ -26,113 +26,79 @@ namespace ArganaRestaurant.Ressources.Styles.Components
     public partial class ProductCard : UserControl
     {
 
+        // every ProductCard is bound with a Product from the ProductsList's Items in the ViewModel, or it's DataContext
+        // that Item is stored in CurrentItem, so we can access to the Props and Methods from Here when we want
 
-        public string Titel
-        {
-            get { return (string)GetValue(TitetProperty); }
-            set { SetValue(TitetProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Titet.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TitetProperty =
-            DependencyProperty.Register("Titel", typeof(string), typeof(ProductCard), new PropertyMetadata("N/A"));
-
-
-        
-
-        public Uri ImageURI
-        {
-            get { return (Uri)GetValue(ImageURIProperty); }
-            set { SetValue(ImageURIProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ImageURI.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ImageURIProperty =
-            DependencyProperty.Register("ImageURI", typeof(Uri), typeof(ProductCard), new PropertyMetadata());
-
-
-
-
-
-        public string Price
-        {
-            get { return (string)GetValue(PriceProperty); }
-            set { SetValue(PriceProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Price.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PriceProperty =
-            DependencyProperty.Register("Price", typeof(string), typeof(ProductCard), new PropertyMetadata(string.Empty));
-
-
-
-
-        public int Totale
-        {
-            get { return (int)GetValue(TotaleProperty); }
-            set { SetValue(TotaleProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Totale.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TotaleProperty =
-            DependencyProperty.Register("Totale", typeof(int), typeof(ProductCard), new PropertyMetadata(0));
-
-
-        public void Selected()
-        {
-            this.CardHolder.BorderBrush = new SolidColorBrush(Colors.Gold);
-            this.CardHolder.BorderThickness = new Thickness(5);
-        }
-
-        Product CurrentItem;
+        ProductsViewModel CurrentItem;
 
         public ProductCard()
         {
             InitializeComponent();
-            //this.DataContext = this;
         }
+
+
+
 
         private void AddToOrders_Click(object sender, RoutedEventArgs e)
         {
-            this.AddToOrders.Visibility = Visibility.Hidden;
-            this.ItemCountity.Visibility = Visibility.Visible;
-            this.ItemPrice.Visibility = Visibility.Hidden;
-            this.Totale = 1;
+            CurrentItem.Quantity = 1;
+            EffectsOnCountityChanged();
         }
 
         private void MinusButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Totale > 1)
-                this.Totale--;
-            else
-            {
-                this.Totale = 0;
-                this.AddToOrders.Visibility = Visibility.Visible;
-                this.ItemCountity.Visibility = Visibility.Hidden;
-                this.ItemPrice.Visibility = Visibility.Visible;
-            }
-            Update();
+            CurrentItem.Quantity--;
+            EffectsOnCountityChanged();
         }
 
 
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Totale++;
-            this.Titel = "test";
-            Update();
-            
+            CurrentItem.Quantity++;
+            EffectsOnCountityChanged();
         }
 
-        public void Update()
+        public void EffectsOnCountityChanged()
         {
+            if(CurrentItem.Quantity == 0)
+            {
+                this.AddToOrders.Visibility = Visibility.Visible;
+                this.ItemCountity.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.AddToOrders.Visibility = Visibility.Hidden;
+                this.ItemCountity.Visibility = Visibility.Visible;
+            }
 
-            CurrentItem = (Product)this.DataContext;
-            CurrentItem.Title = this.Titel;
-            CurrentItem.Quantity = this.Totale;
-            this.DataContext = CurrentItem;
-            
+            IsSelected();
+            //Update();
         }
 
 
+        // when a Item is Selected from the ProductsListBox, it will have a Border Style that's already defined in XAML
+        public void IsSelected()
+        {
+            _ = CurrentItem.Quantity == 0 ? this.CardHolder.BorderThickness = new Thickness(0) : this.CardHolder.BorderThickness = new Thickness(3);
+        }
+
+
+        //public void Update()
+        //{
+
+        //    CurrentItem = (ProductsViewModel)this.DataContext;
+        //    CurrentItem.Title = this.Titel;
+        //    CurrentItem.Quantity = this.Totale;
+        //    this.DataContext = CurrentItem;
+            
+        //}
+
+
+        
+        private void CardHolder_Loaded(object sender, RoutedEventArgs e)
+        {
+            CurrentItem = (ProductsViewModel)this.DataContext;
+            _ = CurrentItem.IsVegan ? this.VeganIcon.Visibility = Visibility.Visible : this.VeganIcon.Visibility = Visibility.Hidden;
+        }
     }
 }

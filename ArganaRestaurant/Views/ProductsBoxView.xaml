@@ -8,29 +8,31 @@
       xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="580"
-      Title="ProductsBoxView">
-    <Page.DataContext>
+      Title="ProductsBoxView" Loaded="Page_Loaded">
+    <!--<Page.DataContext>
         <VMs:ProductsBoxViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Border>
-        <StackPanel Margin="5" Background="White">
+        <StackPanel Margin="5" Background="Transparent">
 
-
+            
             <ListBox x:Name="ProductsList"
                              Template="{DynamicResource ProductsListBoxTemplate}" 
                              ItemContainerStyle="{DynamicResource ProductsListItemTemplate}"
-                             Width="580" Height="500" 
+                             Width="580" Height="600" 
                              Background="Transparent" 
                              BorderThickness="0"
                              ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <components:ProductCard Titel="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                        <components:ProductCard  x:Name="ProductCards" DataContext="{Binding }" />
+                        <!--Titel="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 ImageURI="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                 Price="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                Totale="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                                Totale="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                        </components:ProductCard>-->
                     </DataTemplate>
                 </ListBox.ItemTemplate>
 
@@ -42,17 +44,6 @@
             </ListBox>
 
 
-            <ListView Name="LV" ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="200">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Quantity}"/>
-                            <Label Content="{Binding Title}"/>
-                            <Label Content="{Binding Price}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
 
         </StackPanel>

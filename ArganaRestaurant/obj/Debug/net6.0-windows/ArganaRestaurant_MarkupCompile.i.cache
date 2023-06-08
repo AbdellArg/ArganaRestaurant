@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\49177\source\repos\ArganaRestaurant\ArganaRestaurant\App.xaml
 7-2110049572
 
-10-246803496
+151325522246
 194101785492
 MainWindow.xaml;Ressources\Styles\Components\ProductsCard.xaml;Ressources\Styles\MainStyle.xaml;Ressources\Styles\POSStyle.xaml;Ressources\Styles\ProductsListBoxStyle.xaml;Views\Dashboard.xaml;Views\ProductsBoxView.xaml;
 
-True
+False
 
