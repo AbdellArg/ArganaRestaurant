@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ArganaRestaurant.Models
 {
-    class Product
+    public class Product
     {
 
         public int ProductNr {  get; set; }
@@ -17,6 +17,7 @@ namespace ArganaRestaurant.Models
         public Uri? Image { get; set; }
         public int Quantity { get; set; }
         public bool IsVegan { get; set; }
+        public int CategorieID { get; set; }
 
 
     }

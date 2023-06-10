@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArganaRestaurant.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,12 @@ namespace ArganaRestaurant.Commands
     public abstract class CommandBase : ICommand
     {
 
+        private readonly DataService dataService;
+
         public event EventHandler? CanExecuteChanged;
 
+
+        
 
         public virtual bool CanExecute(object? parameter)
         {

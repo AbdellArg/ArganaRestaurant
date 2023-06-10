@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ArganaRestaurant.Models
 {
-	class Categorie
+	public class Categorie
 	{
 		public int Id { get; set; }
-		private string Name { get; set; }
-        private Uri Icon { get; set; }
+		private string? Name { get; set; }
+        private Uri? Icon { get; set; }
     }
 
 

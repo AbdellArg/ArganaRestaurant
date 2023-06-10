@@ -63,15 +63,15 @@ namespace ArganaRestaurant
 
         private void ProductsView_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            // We will pass the DataContext
-            var content = ProductsView.Content as FrameworkElement;
-            if (content == null)
-                return;
-            content.DataContext = ProductsView.DataContext;
-            var a = content.DataContext as ProductsBoxViewModel;
-            //var items = ProductsView.Content as ProductsBoxView;
+            //    //    // We will pass the DataContext
+            //    //    var content = ProductsView.Content as FrameworkElement;
+            //    //    if (content == null)
+            //    //        return;
+            //    //    content.DataContext = ProductsView.DataContext;
+            //    //    var a = content.DataContext as ProductsBoxViewModel;
+            //    //var items = ProductsView.Content as ProductsBoxView;
 
-            //items.ProductsList.ItemsSource = a.Products;
+            //    //items.ProductsList.ItemsSource = a.Products;
         }
 
 

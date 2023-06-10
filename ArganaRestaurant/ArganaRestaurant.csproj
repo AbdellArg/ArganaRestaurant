@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Commandes\**" />
+	  <EmbeddedResource Remove="Commandes\**" />
+	  <None Remove="Commandes\**" />
+	  <Page Remove="Commandes\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Ressources\Vegan.png" />
 	</ItemGroup>
 
@@ -18,6 +25,7 @@
 		<Folder Include="Ressources\Fonts\" />
 		<Folder Include="Data\ProductsImages\" />
 		<Folder Include="Views\" />
+		<Folder Include="Models\" />
 	</ItemGroup>
 
 	<ItemGroup>

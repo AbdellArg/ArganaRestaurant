@@ -1,4 +1,5 @@
-﻿using ArganaRestaurant.Models;
+﻿using ArganaRestaurant.Commands;
+using ArganaRestaurant.Models;
 using ArganaRestaurant.Ressources.Styles.Components;
 using ArganaRestaurant.Views;
 using System;
@@ -11,21 +12,36 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ArganaRestaurant.ViewModels
 {
-    class ProductsBoxViewModel : ViewModelBase
+    public class ProductsBoxViewModel : ViewModelBase
     {
+        
+        
+
+        public ProductsBoxViewModel()
+        {
+
+            LoadCategories = new LoadCategories(this);
+            LoadProducts = new GetProductsCommand(this, false);
+            LoadVeganProducts = new GetProductsCommand(this, true);
+            LoadByCategorie = new GetProductsByCategorieCommand(this);
+        }
+
+
+        private ObservableCollection<ProductViewModel> products;
+        private ObservableCollection<CategorieViewModel> categories;
+
+        public ICommand LoadCategories { get; set; }
+        public ICommand LoadProducts { get; set; }
+        public ICommand LoadVeganProducts { get; set; }
+        public ICommand LoadByCategorie { get; set; }
 
 
 
-        private BindingList<ProductsViewModel> products;
-
-        private BindingList<CategoriesViewModel> categories;
-
-
-
-        public BindingList<ProductsViewModel> Products
+        public ObservableCollection<ProductViewModel> Products
         {
             get => products;
             set
@@ -39,66 +55,27 @@ namespace ArganaRestaurant.ViewModels
         }
 
 
-        public BindingList<CategoriesViewModel> Categories
+        public ObservableCollection<CategorieViewModel> Categories
         {
-            get { return categories; }
-            set { categories = value; }
-        }
-
-
-
-
-
-        public ProductsBoxViewModel()
-        {
-            Products = LoadProducts();
-            Products.ListChanged += Products_ListChanged;
-
-            Categories = LoadCategories();
- 
-        }
-
-        private void Products_ListChanged(object? sender, ListChangedEventArgs e)
-        {
-            BindingList<ProductsViewModel>? prods = sender as BindingList<ProductsViewModel>;
-            //Products = prods;
-            OnPropertyChanged(nameof(Products));
-            //this.Products = Prods;
-        }
-
-
-        public BindingList<ProductsViewModel> FilterByIsVegan()
-        {
-            var FiltredList = (from product in Products where product.IsVegan == false  select product).ToList();
-
-            return new BindingList<ProductsViewModel>(FiltredList);
-        }
-
-
-        public static BindingList<ProductsViewModel> LoadProducts()
-        {
-            return new BindingList<ProductsViewModel>
+            get => categories; 
+            set
             {
-                new ProductsViewModel { Title = "Marokkanischers Couscous Veggie", Price = 23, Image = new Uri("../../Data/ProductsImages/Muster1.jpg", UriKind.Relative),ProductNr = 1, IsVegan = true},
-                new ProductsViewModel { Title = "Plate1 Chicken Wings", Price = 8, Image = new Uri("Data/ProductsImages/Muster2.jpg", UriKind.Relative),  ProductNr = 2, IsVegan = true},
-                new ProductsViewModel { Title = "Fish Fingers Mit Käse", Price = 15, Image = new Uri("../../Data/ProductsImages/Muster3.jpg", UriKind.Relative), ProductNr = 3, IsVegan = false},
-                new ProductsViewModel { Title = "Plate2 Lahm Steacks Mit Salad",Price = 7.5, Image = new Uri("../Data/ProductsImages/Muster4.jpg", UriKind.Relative), ProductNr = 4, IsVegan = true},
-                new ProductsViewModel { Title = "Tajine l7amm wl Bar9o9", Price = 15, Image = new Uri("../../Data/ProductsImages/Muster5.jpg", UriKind.Relative), ProductNr = 5 , IsVegan = false},
-                new ProductsViewModel { Title = "Tajine GemüsenMischung Veggie", Price = 12, Image = new Uri("../../Data/ProductsImages/Muster6.jpg", UriKind.Relative), ProductNr = 6, IsVegan = true },
-                new ProductsViewModel { Title = "Marokkanischer MinzenTea", Price = 4.5, Image = new Uri("../../Data/ProductsImages/Muster7.jpg", UriKind.Relative), ProductNr = 7, IsVegan = false }
-            };
+                categories = value;
+                OnPropertyChanged();
+            }
         }
 
-        public BindingList<CategoriesViewModel> LoadCategories()
-        {
-            return new BindingList<CategoriesViewModel>
-            {
-                new CategoriesViewModel { Id = 1, Name = "Drinks" },
-                new CategoriesViewModel { Id = 2, Name = "Vegies" },
-                new CategoriesViewModel { Id = 3, Name = "Breakfasts" },
-                new CategoriesViewModel { Id = 4, Name = "Meals" }
-            };
-        }
+
+        //public ObservableCollection<CategorieViewModel> LoadCategories()
+        //{
+        //    return new ObservableCollection<CategorieViewModel>
+        //    {
+        //        new CategorieViewModel { Id = 1, Name = "Drinks" },
+        //        new CategorieViewModel { Id = 2, Name = "Vegies" },
+        //        new CategorieViewModel { Id = 3, Name = "Breakfasts" },
+        //        new CategorieViewModel { Id = 4, Name = "Meals" }
+        //    };
+        //}
 
 
 

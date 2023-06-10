@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mdl="clr-namespace:ArganaRestaurant.Models"
-             xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
+             xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels" 
              x:Name="root"
              mc:Ignorable="d" 
-             d:DesignHeight="190" d:DesignWidth="170" Background="Transparent">
+             d:DesignHeight="190" d:DesignWidth="170" Background="Transparent"  >
     <!--<UserControl.DataContext>
         <VMs:ProductsViewModel />
     </UserControl.DataContext>-->
@@ -47,7 +47,7 @@
                         Width="170"
                         CornerRadius="20 20 0 0">
                 <Border.Background>
-                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
                 </Border.Background>
             </Border>
 
@@ -90,7 +90,7 @@
 
                 <TextBlock Width="160"
                        Height="50"
-                        Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding Title}"
                         FontSize="13"
                         FontFamily="{StaticResource SourceSansPro}"
                         TextAlignment="Center"
@@ -125,7 +125,7 @@
                             FontSize="15"
                             Padding="0 2 0 0"
                             FontFamily="{StaticResource SourceSansPro}"
-                            Content="{Binding Price, UpdateSourceTrigger=PropertyChanged}" 
+                            Content="{Binding Price}" 
                            Foreground="#000000" />
                     <Label Grid.Column="1"
                             HorizontalAlignment="Left"
@@ -137,6 +137,7 @@
                             Content="€" Foreground="#FF155A08" />
                 </Grid>
 
+                
                 <!-- Button to Add the Product to the Order List-->
                 <Button Grid.Column="1" x:Name="AddToOrders"
                         Height="26" Width="70"
@@ -144,7 +145,9 @@
                         Style="{StaticResource ProductCardButton}"
                         HorizontalAlignment="Left"
                         Margin="5 0 0 0"
-                        Visibility="Visible" Click="AddToOrders_Click" >
+                        Visibility="Visible"
+                        Command="{Binding OneMoreProductCommande}"
+                        Click="AddToOrders_Click" >
                 </Button>
 
 
@@ -180,9 +183,9 @@
                                 Margin="0 -1 0 0">
                                 <Label FontFamily="{StaticResource SourceSansPro}"
                                    FontWeight="Regular"
-                                   Content="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Content="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"
                                    FontSize="14"
-                                   Foreground="#FFFFFF"/>
+                                   Foreground="#FFFFFF" />
 
                             </Border>
 
@@ -191,7 +194,7 @@
 
                         <Button Grid.Column="0"
                                 Style="{StaticResource PlusMinusButtons}"
-                                Click="MinusButton_Click">
+                                Command="{Binding OneLessProductCommande}">
                             <Button.Content>
                                 <Grid>
                                     <Grid.Resources>
@@ -207,7 +210,7 @@
 
                         <Button Grid.Column="2"
                                 Style="{StaticResource PlusMinusButtons}"
-                                Click="PlusButton_Click">
+                                Command="{Binding OneMoreProductCommande}" >
                             <Button.Content>
                                 <Grid>
                                     <Grid.Resources>

@@ -53,29 +53,13 @@
 
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="600"/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Margin="5 40 10 5" Orientation="Vertical">
 
-                    <ItemsControl DataContext="{StaticResource PBVM}"  ItemsSource="{Binding Categories}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button Width="120" Content="{Binding Name}" Style="{StaticResource ProButtonStyle }" Margin="5"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-
-                                <WrapPanel Orientation="Horizontal" Height="70" Width="550" ScrollViewer.CanContentScroll="True" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-
-
-                    <Frame x:Name="ProductsView" DataContext="{StaticResource PBVM}"  Height="600" Source="Views/ProductsBoxView.xaml" LoadCompleted="ProductsView_LoadCompleted"  />
+                    <Frame x:Name="ProductsView" DataContext="{StaticResource PBVM}" Height="600" Source="Views/ProductsBoxView.xaml" LoadCompleted="ProductsView_LoadCompleted"  />
 
                 </StackPanel>
 

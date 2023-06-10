@@ -60,6 +60,75 @@
     </Style>
 
 
+    <Style x:Key="CategoriesItemTemplate" TargetType="RadioButton">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="FontFamily" Value="{StaticResource SourceSansPro}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="Bd"
+                            CornerRadius="20"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Width="110"
+                            Height="40"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="Holder" HorizontalAlignment="Center"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+
+
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter" >
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" From="#FFFFFF" To="{StaticResource SecondColorAsColor}" Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" From="#000000" To="#FFFFFF" Duration="0:0:0.3"/>
+                                </Storyboard>
+
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave" >
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Background.Color" From="{StaticResource MainColorAsColor}" To="#FFFFFF" Duration="0:0:0.2"/>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" From="#FFFFFF" To="#000000" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource MainColor}"/>
+                            <Setter Property="Background" Value="#FFFFFF"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+                
+            </Setter.Value>
+        </Setter>
+        
+        
+
+    </Style>
+
+
+
     <!-- Begin Region ScrollBar-->
     <!-- ScrollBar RepeatButtonTransparent Style -->
     <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">

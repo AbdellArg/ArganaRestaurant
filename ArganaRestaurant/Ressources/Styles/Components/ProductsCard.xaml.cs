@@ -27,36 +27,21 @@ namespace ArganaRestaurant.Ressources.Styles.Components
     {
 
         // every ProductCard is bound with a Product from the ProductsList's Items in the ViewModel, or it's DataContext
-        // that Item is stored in CurrentItem, so we can access to the Props and Methods from Here when we want
+        // that Item is stored in CurrentItem, for UI Purpose
 
-        ProductsViewModel CurrentItem;
+        ProductViewModel CurrentItem;
 
         public ProductCard()
         {
             InitializeComponent();
         }
 
-
-
-
         private void AddToOrders_Click(object sender, RoutedEventArgs e)
         {
-            CurrentItem.Quantity = 1;
-            EffectsOnCountityChanged();
+            this.AddToOrders.Visibility = Visibility.Hidden;
+            this.ItemCountity.Visibility = Visibility.Visible;
         }
 
-        private void MinusButton_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentItem.Quantity--;
-            EffectsOnCountityChanged();
-        }
-
-
-        private void PlusButton_Click(object sender, RoutedEventArgs e)
-        {
-            CurrentItem.Quantity++;
-            EffectsOnCountityChanged();
-        }
 
         public void EffectsOnCountityChanged()
         {
@@ -72,7 +57,6 @@ namespace ArganaRestaurant.Ressources.Styles.Components
             }
 
             IsSelected();
-            //Update();
         }
 
 
@@ -83,22 +67,28 @@ namespace ArganaRestaurant.Ressources.Styles.Components
         }
 
 
-        //public void Update()
-        //{
-
-        //    CurrentItem = (ProductsViewModel)this.DataContext;
-        //    CurrentItem.Title = this.Titel;
-        //    CurrentItem.Quantity = this.Totale;
-        //    this.DataContext = CurrentItem;
-            
-        //}
-
 
         
         private void CardHolder_Loaded(object sender, RoutedEventArgs e)
         {
-            CurrentItem = (ProductsViewModel)this.DataContext;
+            CurrentItem = (ProductViewModel)this.DataContext;
             _ = CurrentItem.IsVegan ? this.VeganIcon.Visibility = Visibility.Visible : this.VeganIcon.Visibility = Visibility.Hidden;
+
+
+            // add a Event Listener To the CurrentProducts, when it Propreties changed
+            CurrentItem.PropertyChanged += ProductPropertyChanged;
+
         }
+
+        // Only UI Changes
+        void ProductPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Quantity")
+            {
+                EffectsOnCountityChanged();
+            }
+        }
+
+
     }
 }

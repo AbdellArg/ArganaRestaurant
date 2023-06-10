@@ -1,4 +1,5 @@
-﻿using ArganaRestaurant.ViewModels;
+﻿using ArganaRestaurant.Commands;
+using ArganaRestaurant.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,32 @@ namespace ArganaRestaurant.Views
     /// </summary>
     public partial class ProductsBoxView : Page
     {
+
+        ProductsBoxViewModel? CurrentViewModel;
+
         public ProductsBoxView()
         {
             InitializeComponent();
-
-            //foreach (var item in ProductsviewModel.Products)
-            //{
-            //    ProductsList.
-            //}
         }
+
+
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            CurrentViewModel = this.DataContext as ProductsBoxViewModel;
+            var LoadCategories = new LoadCategories(CurrentViewModel);
+            LoadCategories.Execute(null);
+            var LoadProducts = new GetProductsCommand(CurrentViewModel, false);
+            LoadProducts.Execute(null);
+        }
 
 
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            CategorieViewModel SelectedCategorie = ((RadioButton)sender).DataContext as CategorieViewModel;
+            var CategorieCommand = new GetProductsByCategorieCommand(CurrentViewModel);
+            CategorieCommand.Execute(SelectedCategorie);
         }
     }
 }
