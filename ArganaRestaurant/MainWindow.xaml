@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:components="clr-namespace:ArganaRestaurant.Ressources.Styles.Components"
+        xmlns:Vs="clr-namespace:ArganaRestaurant.Views" 
         xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
-        xmlns:Vs="clr-namespace:ArganaRestaurant.Views"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=VMs:OrderViewModel}"
         Title="MainWindow" Height="720" Width="1080" Background="Transparent" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen" WindowStyle="None" >
 
-    <Window.Resources>
-        <VMs:ProductsBoxViewModel x:Key="PBVM"/>
-    </Window.Resources>
+    <!--<Window.DataContext>
+        <VMs:OrderViewModel/>
+    </Window.DataContext>-->
 
 
     <Border x:Name="MainContainer" CornerRadius="10"
@@ -59,11 +60,15 @@
 
                 <StackPanel Grid.Column="0" Margin="5 40 10 5" Orientation="Vertical">
 
-                    <Frame x:Name="ProductsView" DataContext="{StaticResource PBVM}" Height="600" Source="Views/ProductsBoxView.xaml" LoadCompleted="ProductsView_LoadCompleted"  />
+                    <Frame x:Name="ProductsView" Height="650" >
+                        <Frame.Content>
+                            <Vs:ProductsBoxView />
+                        </Frame.Content>
+                    </Frame>
 
                 </StackPanel>
 
-                <ListView Name="LV" DataContext="{StaticResource PBVM}" ItemsSource="{Binding Products}" Grid.Column="1" Height="500">
+                <ListView Name="LV" ItemsSource="{Binding Items}" Grid.Column="1" Height="500">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

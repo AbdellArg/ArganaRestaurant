@@ -12,7 +12,7 @@ namespace ArganaRestaurant.Models
         public int OrderNr { get; set; }
         public int TableNr { get; set; }
         public double Total { get; set; }
-        public string? Name { get; set; }
+        public string? CustomerName { get; set; }
         public List<Product>? OrderItems { get; set; }
 
     }

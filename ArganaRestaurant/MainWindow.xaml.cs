@@ -1,4 +1,5 @@
-﻿using ArganaRestaurant.Models;
+﻿using ArganaRestaurant.Commands;
+using ArganaRestaurant.Models;
 using ArganaRestaurant.ViewModels;
 using ArganaRestaurant.Views;
 using System;
@@ -16,16 +17,20 @@ namespace ArganaRestaurant
 
     public partial class MainWindow : Window
     {
-        //ProductsBoxViewModel viewModel;
+        OrderViewModel viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
-            //viewModel = new ProductsBoxViewModel();
-            ////ProductsView.DataContext = viewModel;
+
+            //ProductsBoxViewModel productsBoxViewModel = new ProductsBoxViewModel();
+            viewModel = new OrderViewModel();
+
+            this.DataContext = viewModel;
+            //ProductsView.DataContext = viewModel.ProductsViewModel;
             //this.DataContext = viewModel;
             //LV.ItemsSource = viewModel.Products;
-            
+
         }
 
 
@@ -63,15 +68,29 @@ namespace ArganaRestaurant
 
         private void ProductsView_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            //    //    // We will pass the DataContext
-            //    //    var content = ProductsView.Content as FrameworkElement;
-            //    //    if (content == null)
-            //    //        return;
-            //    //    content.DataContext = ProductsView.DataContext;
-            //    //    var a = content.DataContext as ProductsBoxViewModel;
-            //    //var items = ProductsView.Content as ProductsBoxView;
+            //// We will pass the DataContext
+            //var content = ProductsView.Content as FrameworkElement;
+            //if (content == null)
+            //    return;
+            //content.DataContext = ProductsView.DataContext;
+            //var a = content.DataContext as ProductsBoxViewModel;
+            //var items = ProductsView.Content as ProductsBoxView;
 
-            //    //items.ProductsList.ItemsSource = a.Products;
+            ////items.ProductsList.ItemsSource = a.Products;
+            ///
+
+            //ProductsBoxViewModel CurrentViewModel = (this.DataContext as OrderViewModel).ProductsViewModel;
+                
+            //var LoadCategories = new LoadCategories(CurrentViewModel);
+            //LoadCategories.Execute(null);
+            //var LoadProducts = new GetProductsCommand(CurrentViewModel, false);
+            //LoadProducts.Execute(null);
+        }
+
+        private void ProductsView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            //ProductsView.Refresh();
+
         }
 
 

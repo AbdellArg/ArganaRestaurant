@@ -19,25 +19,32 @@ namespace ArganaRestaurant.ViewModels
     public class ProductsBoxViewModel : ViewModelBase
     {
         
-        
-
-        public ProductsBoxViewModel()
-        {
-
-            LoadCategories = new LoadCategories(this);
-            LoadProducts = new GetProductsCommand(this, false);
-            LoadVeganProducts = new GetProductsCommand(this, true);
-            LoadByCategorie = new GetProductsByCategorieCommand(this);
-        }
-
-
         private ObservableCollection<ProductViewModel> products;
         private ObservableCollection<CategorieViewModel> categories;
+        private ObservableCollection<ProductViewModel> orderProducts;
 
         public ICommand LoadCategories { get; set; }
         public ICommand LoadProducts { get; set; }
         public ICommand LoadVeganProducts { get; set; }
         public ICommand LoadByCategorie { get; set; }
+
+
+
+        public ProductsBoxViewModel()
+        {
+            //orderProducts = SelectedProducts;
+            //var test = this;
+            LoadCategories = new LoadCategories(this);
+            LoadProducts = new GetProductsCommand(this, false);
+            LoadVeganProducts = new GetProductsCommand(this, true);
+            LoadByCategorie = new GetProductsByCategorieCommand(this);
+            LoadCategories.Execute(null);
+            LoadProducts.Execute(null);
+            //this.OnPropertyChanged();
+        }
+
+
+        
 
 
 
@@ -62,6 +69,19 @@ namespace ArganaRestaurant.ViewModels
             {
                 categories = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<ProductViewModel> OrderProducts
+        {
+            get => orderProducts;
+            set
+            {
+                if (orderProducts != value)
+                {
+                    orderProducts = value;
+                    OnPropertyChanged();
+                }
             }
         }
 

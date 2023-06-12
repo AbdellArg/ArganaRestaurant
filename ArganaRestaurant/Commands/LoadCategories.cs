@@ -25,7 +25,7 @@ namespace ArganaRestaurant.Commands
 
         public override void Execute(object? parameter)
         {
-            ProductsViewModel.Categories = new ObservableCollection<CategorieViewModel>(dataService.LoadCategories());
+            ProductsViewModel.Categories = dataService.LoadCategories();
         }
     }
 }
