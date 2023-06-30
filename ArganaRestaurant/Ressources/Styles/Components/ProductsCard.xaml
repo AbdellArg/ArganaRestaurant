@@ -16,7 +16,7 @@
     <!-- This is a User Controll for the UI Presentation of our Products in the POS -->
     <!-- I created this Product Card Holders, to use it as ListBox Item in "ProductsBoxView" -->
 
-    <Border x:Name="CardHolder" Loaded="CardHolder_Loaded" Background="#FFFFFF" CornerRadius="20 20 12 12" BorderThickness="0">
+    <Border x:Name="CardHolder" Loaded="CardHolder_Loaded" Background="{StaticResource BackgroundColor}" CornerRadius="20 20 12 12" BorderThickness="0">
         <Border.Effect>
             <DropShadowEffect Color="Black" BlurRadius="10" Direction="-90" ShadowDepth="0" Opacity="0.3"/>
         </Border.Effect>
@@ -60,7 +60,7 @@
                         CornerRadius="20 20 0 0">
                 <Border.Background>
                     <RadialGradientBrush Opacity="0.3">
-                        <GradientStop Color="#FF101010" Offset="0.95"/>
+                        <GradientStop Color="#FFFFFF" Offset="0.95"/>
                         <GradientStop Color="#00101010" Offset="0.6"/>
                     </RadialGradientBrush>
                 </Border.Background>
@@ -95,7 +95,7 @@
                         FontFamily="{StaticResource SourceSansPro}"
                         TextAlignment="Center"
                         TextWrapping="Wrap"
-                        Foreground="#FF404040"
+                        Foreground="#FFFFFF"
                         FontWeight="SemiBold"
                         Padding="0 10 0 0" LineHeight="6"/>
 
@@ -126,7 +126,7 @@
                             Padding="0 2 0 0"
                             FontFamily="{StaticResource SourceSansPro}"
                             Content="{Binding Price}" 
-                           Foreground="#000000" />
+                           Foreground="#FFFFFF" />
                     <Label Grid.Column="1"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
@@ -134,7 +134,7 @@
                             FontSize="11"
                             Padding="2 0 0 0"
                             FontFamily="{StaticResource Nunito}"
-                            Content="€" Foreground="#FF155A08" />
+                            Content="€" Foreground="#FF4CD932" />
                 </Grid>
 
                 

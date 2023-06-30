@@ -13,9 +13,13 @@ namespace ArganaRestaurant.ViewModels
     public class ProductViewModel : ViewModelBase
     {
 
-        public ProductViewModel()
+        private readonly Product _product;
+
+
+        public ProductViewModel(Product product)
         {
-            this.quantity = 0;
+            _product = product;
+            quantity = 0;
             OneMoreProductCommande = new OrderItemQuantityCommand(this, "Plus");
             OneLessProductCommande = new OrderItemQuantityCommand(this, "Minus");
         }
@@ -25,41 +29,21 @@ namespace ArganaRestaurant.ViewModels
         public ICommand OneMoreProductCommande { get; set; }
         public ICommand OneLessProductCommande { get; set; }
 
-        private int productNr;
-        private string title;
-        private double price;
-        private Uri image;
         private int quantity;
-        private bool isVegan;
-        private CategorieViewModel categorie;
 
         
 
-        public int ProductNr
-        {
-            get => productNr;
-            set { productNr = value; }
-        }
+        public int ProductNr => _product.ProductNr;
 
-        public string Title
-        {
-            get => title;
-            set { title = value; }
-        }
+        public string Title => _product.Title;
 
-        public double Price
-        {
-            get => price;
-            set { price = value; }
-        }
+        public double Price => _product.Price;
 
+        public Uri Image => _product.Image;
 
-        public Uri Image
-        {
-            get => image;
-            set { image = value; }
-        }
+        public bool IsVegan => _product.IsVegan;
 
+        public Categorie Categorie => _product.Categorie;
 
         public int Quantity
         {
@@ -68,20 +52,12 @@ namespace ArganaRestaurant.ViewModels
             {
                 quantity = value;
                 OnPropertyChanged();
+                OnQuantityChecked?.Invoke(this);
             }
         }
 
-        public bool IsVegan
-        {
-            get => isVegan;
-            set { isVegan = value; }
-        }
+        public static Action<ProductViewModel>? OnQuantityChecked;
 
-        public CategorieViewModel Categorie
-        {
-            get => categorie;
-            set { categorie = value; }
-        }
 
 
 

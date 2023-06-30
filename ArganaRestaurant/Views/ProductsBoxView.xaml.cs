@@ -1,4 +1,5 @@
 ﻿using ArganaRestaurant.Commands;
+using ArganaRestaurant.Models;
 using ArganaRestaurant.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,11 @@ namespace ArganaRestaurant.Views
 
         ProductsBoxViewModel? CurrentViewModel;
 
-        public ProductsBoxView()
+        public ProductsBoxView(ProductsBoxViewModel productsBoxViewModel)
         {
             InitializeComponent();
 
+            this.DataContext = productsBoxViewModel;
         }
 
 
@@ -36,29 +38,16 @@ namespace ArganaRestaurant.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentViewModel = this.DataContext as ProductsBoxViewModel;
-            //this.DataContext = CurrentViewModel;
-            //var LoadCategories = new LoadCategories(CurrentViewModel);
-            //LoadCategories.Execute(null);
-            //var LoadProducts = new GetProductsCommand(CurrentViewModel, false);
-            //LoadProducts.Execute(null);
         }
 
 
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            CategorieViewModel SelectedCategorie = ((RadioButton)sender).DataContext as CategorieViewModel;
+            Categorie? SelectedCategorie = ((RadioButton)sender).DataContext as Categorie;
             var CategorieCommand = new GetProductsByCategorieCommand(CurrentViewModel);
             CategorieCommand.Execute(SelectedCategorie);
         }
 
-        private void Page_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //CurrentViewModel = this.DataContext as ProductsBoxViewModel;
-            //var LoadCategories = new LoadCategories(CurrentViewModel);
-            //LoadCategories.Execute(null);
-            //var LoadProducts = new GetProductsCommand(CurrentViewModel, false);
-            //LoadProducts.Execute(null);
-        }
     }
 }

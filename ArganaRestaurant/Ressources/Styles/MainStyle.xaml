@@ -2,10 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Colors -->
-    <Color x:Key="MainColorAsColor">#354f52</Color>
-    <Color x:Key="SecondColorAsColor">#FFB84C</Color>
+    <Color x:Key="MainColorAsColor">#0E2954</Color>
+    <Color x:Key="SecondColorAsColor">#1F6E8C</Color>
+    <Color x:Key="BackgroundColorAsColor">#FF717171</Color>
     <SolidColorBrush x:Key="MainColor" Color="{StaticResource MainColorAsColor}"/>
     <SolidColorBrush x:Key="SecondColor" Color="{StaticResource SecondColorAsColor}"/>
+    <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource BackgroundColorAsColor}"/>
 
     <FontFamily x:Key="SourceSansPro">./Fonts/#Source Sans Pro</FontFamily>
 
@@ -15,41 +17,36 @@
     <SolidColorBrush x:Key="PaletteDark" Color="#C2B8A3"/>
     <SolidColorBrush x:Key="PaletteDarker" Color="#A19882"/>
 
+    
+    
     <!-- Button Colors -->
-    <SolidColorBrush x:Key="ProButtonColor" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="ButtonTextColor" Color="#14181D"/>
+    <SolidColorBrush x:Key="ButtonBackColor" Color="#FFFFFF" Opacity="0.2"/>
+    <SolidColorBrush x:Key="ButtonBackHover" Color="#000000" Opacity="0.2"/>
+    <SolidColorBrush x:Key="ButtonTextColor" Color="#FFFFFF"/>
 
-
-    <!-- Start: ProButtonStyle -->
-    <Style x:Key="ProButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource ProButtonColor}"/>
+    <!-- Start: Style of the navigation Bar Buttons -->
+    <Style x:Key="NavBarButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource ButtonBackColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource ButtonTextColor}"/>
         <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="Padding" Value="12 6"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="MaxHeight" Value="40"/>
-        <Setter Property="MinHeight" Value="40"/>
-        <Setter Property="Width" Value="180"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="btnBorder" CornerRadius="20"
-                                Background="{TemplateBinding Background}"
-                                Width="{TemplateBinding Width}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                SnapsToDevicePixels="True"
-                                Padding="{TemplateBinding Padding}">
-                        <ContentPresenter x:Name="ContentPresenter" Focusable="False"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Margin="{TemplateBinding Padding}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              RecognizesAccessKey="True"
-                                              TextBlock.Foreground="{TemplateBinding Foreground}" >
-                        </ContentPresenter>
+                    <Border x:Name="btnBorder" CornerRadius="5"
+                            Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="30"
+                            BorderBrush="#FFF"
+                            BorderThickness="0"
+                            SnapsToDevicePixels="True"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="Center"/>
                         <!--<Border.Effect>
                                 <DropShadowEffect ShadowDepth=".5" Direction="0"
                                                   Opacity=".3"/>
@@ -57,33 +54,12 @@
                     </Border>
                     <ControlTemplate.Triggers>
 
-                        <EventTrigger RoutedEvent="Button.MouseEnter">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <!--<DoubleAnimation
-                                                Storyboard.TargetProperty="Opacity"
-                                                From="1.0" To="0.5" Duration="0:0:0.5"  />-->
-                                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#000000" Duration="0:0:0.2" />
-                                        <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" To="#FFFFFF" Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonBackHover}"/>
+                            <Setter TargetName="btnBorder" Property="BorderThickness" Value="0 0 0 2"/>
+                        </Trigger>
 
-                        <EventTrigger RoutedEvent="Button.MouseLeave">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <!--<DoubleAnimation
-                                                Storyboard.TargetProperty="Opacity"
-                                                From="1.0" To="0.5" Duration="0:0:0.5"  />-->
-                                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#FFFFFF" Duration="0:0:0.1" />
-                                        <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" To="#000000" Duration="0:0:0.1" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

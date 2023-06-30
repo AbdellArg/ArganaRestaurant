@@ -12,12 +12,11 @@ namespace ArganaRestaurant.Models
     {
 
         public int ProductNr {  get; set; }
-        public string? Title { get; set; }
+        public string Title { get; set; }
         public double Price { get; set; }
-        public Uri? Image { get; set; }
-        public int Quantity { get; set; }
+        public Uri Image { get; set; }
         public bool IsVegan { get; set; }
-        public int CategorieID { get; set; }
+        public Categorie Categorie { get; set; }
 
 
     }

@@ -11,28 +11,31 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace ArganaRestaurant
 {
 
     public partial class MainWindow : Window
     {
-        OrderViewModel viewModel;
+
+        public OrderViewModel orderViewModel;
+        public ProductsBoxViewModel productsBoxViewModel;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            //ProductsBoxViewModel productsBoxViewModel = new ProductsBoxViewModel();
-            viewModel = new OrderViewModel();
+            ProductsBoxViewModel productsBoxViewModel = new ProductsBoxViewModel();
+            orderViewModel = new OrderViewModel(productsBoxViewModel);
 
-            this.DataContext = viewModel;
-            //ProductsView.DataContext = viewModel.ProductsViewModel;
-            //this.DataContext = viewModel;
-            //LV.ItemsSource = viewModel.Products;
+            ProductsBoxView productsBoxView = new ProductsBoxView(productsBoxViewModel);
+
+            this.DataContext = orderViewModel;
+            ProductsView.Content = productsBoxView;
 
         }
-
 
 
         private void MainBackground_MouseDown(object sender, MouseButtonEventArgs e)
@@ -43,60 +46,64 @@ namespace ArganaRestaurant
             }
         }
 
-        bool IsMaximized = false;
+
+        WindowState winState = WindowState.Normal;
+        public void WindowMaxMin()
+        {
+            if (winState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                this.Width = 1080;
+                this.Height = 720;
+                winState = WindowState.Normal;
+            }
+            else if (winState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+                winState = WindowState.Maximized;
+            }
+
+        }
+
+        
         private void MainBackground_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ClickCount == 2)
             {
-                if (IsMaximized) 
-                {
-                    this.WindowState = WindowState.Normal;
-                    this.Width = 1080;
-                    this.Height = 720;
-                    IsMaximized = false;
-                }
-                else 
-                {
-                    this.WindowState = WindowState.Maximized;
-                    IsMaximized = true;
-                }
-                
+                WindowMaxMin();
             }
         }
 
-
-
-        private void ProductsView_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        private void CloseButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //// We will pass the DataContext
-            //var content = ProductsView.Content as FrameworkElement;
-            //if (content == null)
-            //    return;
-            //content.DataContext = ProductsView.DataContext;
-            //var a = content.DataContext as ProductsBoxViewModel;
-            //var items = ProductsView.Content as ProductsBoxView;
-
-            ////items.ProductsList.ItemsSource = a.Products;
-            ///
-
-            //ProductsBoxViewModel CurrentViewModel = (this.DataContext as OrderViewModel).ProductsViewModel;
-                
-            //var LoadCategories = new LoadCategories(CurrentViewModel);
-            //LoadCategories.Execute(null);
-            //var LoadProducts = new GetProductsCommand(CurrentViewModel, false);
-            //LoadProducts.Execute(null);
+            this.Close();
         }
 
-        private void ProductsView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void MaxButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //ProductsView.Refresh();
+            WindowMaxMin();
+        }
+
+        private void MinButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
 
         }
 
+        private void NavBarOpenClose(object sender, MouseButtonEventArgs e)
+        {
+            if (OpenNavBar.Visibility == Visibility.Visible) 
+            {
+                OpenNavBar.Visibility = Visibility.Hidden;
+                CloseNavBar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                OpenNavBar.Visibility = Visibility.Visible;
+                CloseNavBar.Visibility = Visibility.Hidden;
+            }
 
-
-        //ICollectionView view = CollectionViewSource.GetDefaultView(ItemsSource);
-        //view.Refresh();
+        }
 
     }
 }

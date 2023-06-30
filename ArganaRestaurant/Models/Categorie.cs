@@ -10,8 +10,8 @@ namespace ArganaRestaurant.Models
 	public class Categorie
 	{
 		public int Id { get; set; }
-		private string? Name { get; set; }
-        private Uri? Icon { get; set; }
+		public string? Name { get; set; }
+        public Uri? Icon { get; set; }
     }
 
 

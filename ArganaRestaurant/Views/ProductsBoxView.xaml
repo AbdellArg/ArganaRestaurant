@@ -3,62 +3,67 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ArganaRestaurant.Views"
+      xmlns:local="clr-namespace:ArganaRestaurant"
       xmlns:components="clr-namespace:ArganaRestaurant.Ressources.Styles.Components" 
       xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels" 
       mc:Ignorable="d"
-      d:DesignHeight="700" d:DesignWidth="600"
-      Title="ProductsBoxView" Loaded="Page_Loaded" DataContextChanged="Page_DataContextChanged" >
-    <Page.DataContext>
-        <VMs:ProductsBoxViewModel   />
-    </Page.DataContext>
+      Title="ProductsBoxView" Loaded="Page_Loaded" >
+    <!--<Page.DataContext>
+        <VMs:ProductsBoxViewModel/>
+    </Page.DataContext>-->
 
 
     <Border>
         <StackPanel Margin="5" Background="Transparent">
 
-            <Button Width="120" Content="Vegan" Command="{Binding LoadVeganProducts}"  Style="{StaticResource ProButtonStyle }" Margin="5"/>
-            <Button Width="120" Content="All" Command="{Binding LoadProducts}"  Style="{StaticResource ProButtonStyle }" Margin="5"/>
+            <StackPanel Margin="20" Orientation="Horizontal" Background="Transparent">
 
-            <ItemsControl ItemsSource="{Binding Categories}"> 
-                <ItemsControl.ItemTemplate >
-                    <DataTemplate>
-                        <RadioButton GroupName="Categories" 
+                <Button Width="120" Content="Vegan" Command="{Binding LoadVeganProducts}"  Style="{StaticResource NavBarButton }" Margin="5"/>
+                <Button Width="120" Content="All" Command="{Binding LoadProducts}"  Style="{StaticResource NavBarButton }" Margin="5"/>
+
+                <ItemsControl ItemsSource="{Binding Categories}">
+                    <ItemsControl.ItemTemplate >
+                        <DataTemplate>
+                            <RadioButton GroupName="Categories" 
                                      Content="{Binding Name}" 
                                      Style="{StaticResource CategoriesItemTemplate}"
                                      Checked="RadioButton_Checked" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
 
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" Width="600" ScrollViewer.CanContentScroll="True" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" ScrollViewer.CanContentScroll="True" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
 
-            <ListBox x:Name="ProductsList"
-                             Template="{DynamicResource ProductsListBoxTemplate}" 
-                             ItemContainerStyle="{DynamicResource ProductsListItemTemplate}"
-                             Width="600" Height="600" 
-                             Background="Transparent" 
-                             BorderThickness="0"
-                             ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            </StackPanel>
 
+            <ListBox x:Name="ProductsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.CanContentScroll="False"
+                    Template="{DynamicResource ProductsListBoxTemplate}" 
+                    ItemContainerStyle="{DynamicResource ProductsListItemTemplate}"
+                    Height="600" 
+                    Background="Transparent" 
+                    BorderThickness="0"
+                    ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+
+                <ListBox.GroupStyle>
+                    <GroupStyle/>
+                </ListBox.GroupStyle>
+                
                 <ListBox.ItemTemplate>
                     <DataTemplate>
+                        
                         <components:ProductCard  x:Name="ProductCards" DataContext="{Binding}" />
-                        <!--Titel="{Binding Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                ImageURI="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                Price="{Binding Price, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                Totale="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                        </components:ProductCard>-->
+                        
                     </DataTemplate>
                 </ListBox.ItemTemplate>
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Width="550" HorizontalAlignment="Center" />
+                        <WrapPanel IsItemsHost="True" Width="Auto" MaxWidth="1100" Orientation="Horizontal" HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>

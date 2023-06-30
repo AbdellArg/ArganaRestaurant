@@ -1,4 +1,5 @@
-﻿using ArganaRestaurant.Services;
+﻿using ArganaRestaurant.Models;
+using ArganaRestaurant.Services;
 using ArganaRestaurant.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace ArganaRestaurant.Commands
 {
@@ -26,20 +28,41 @@ namespace ArganaRestaurant.Commands
         }
 
 
-        public override void Execute(object? parameter)
+
+    public override void Execute(object? parameter)
+        {
+            if (productsVM.Products == null)
+            {
+                // for the first, when the ProductsBoxViewModel loaded, we load all the Products 
+
+                List<ProductViewModel> ProductsList = new();
+
+                foreach (var product in dataService.GetAllProducts())
+                {
+                    ProductsList.Add(new ProductViewModel(product));
+                }
+
+                productsVM.Products = new ObservableCollection<ProductViewModel>(ProductsList);
+            }
+
+            else
+            {
+                productsVM.ProductsView.Filter += FilterByCat;
+            }
+
+        }
+
+        private bool FilterByCat(object obj)
         {
             if (isVegan)
             {
-                productsVM.Products = new ObservableCollection<ProductViewModel>(dataService.GetVeganProducts().ToList());
+                var product = (ProductViewModel)obj;
+                return product.IsVegan;
             }
-            else
-            {
-                productsVM.Products = new ObservableCollection<ProductViewModel>(dataService.GetAllProducts().ToList());
-            }
+            else return true;
+
         }
 
 
-
-        
     }
 }

@@ -36,8 +36,8 @@
 
     <!-- POS ProductsList ListBox Items Style -->
     <Style x:Key="ProductsListItemTemplate" TargetType="ListBoxItem">
-        <Setter Property="Height" Value="200"/>
-        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="220"/>
+        <Setter Property="Width" Value="200"/>
         <!--<Setter Property="Margin" Value="5"/>-->
         <Setter Property="Template">
             <Setter.Value>
@@ -415,11 +415,11 @@
                     <Grid x:Name="Grid" Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="0"/>
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
                         <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanHorizontallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" CanVerticallyScroll="False" Grid.Column="0" Content="{TemplateBinding Content}" CanContentScroll="{TemplateBinding CanContentScroll}" Margin="{TemplateBinding Padding}" Grid.Row="0"/>

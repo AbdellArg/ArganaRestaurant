@@ -11,7 +11,7 @@ namespace ArganaRestaurant.Commands
     public abstract class CommandBase : ICommand
     {
 
-        private readonly DataService dataService;
+        private readonly DataService? dataService;
 
         public event EventHandler? CanExecuteChanged;
 

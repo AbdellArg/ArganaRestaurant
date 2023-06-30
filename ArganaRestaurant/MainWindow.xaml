@@ -8,7 +8,9 @@
         xmlns:VMs="clr-namespace:ArganaRestaurant.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=VMs:OrderViewModel}"
-        Title="MainWindow" Height="720" Width="1080" Background="Transparent" AllowsTransparency="True"
+        Title="MainWindow" Height="720" Width="1080"
+        ResizeMode="CanResize"
+        Background="Transparent" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen" WindowStyle="None" >
 
     <!--<Window.DataContext>
@@ -16,69 +18,456 @@
     </Window.DataContext>-->
 
 
-    <Border x:Name="MainContainer" CornerRadius="10"
+    <Border x:Name="MainContainer" CornerRadius="22"
             MouseDown="MainBackground_MouseDown" 
             MouseLeftButtonDown="MainBackground_MouseLeftButtonDown"
-            Background="#F5F5F5" >
+            Background="White" BorderThickness="0" >
 
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" Background="{DynamicResource MainColor}" BorderBrush="Transparent" >
+
+            <!-- Header  -->
+            <Border Grid.Row="0" VerticalAlignment="Center"
+                    CornerRadius="20 20 0 0" BorderThickness="0" >
 
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="170"/>
-                        <RowDefinition Height="400"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="380"/>
+                    </Grid.ColumnDefinitions>
 
 
-                    <Image Grid.Row="0" Source="/Ressources/logo.png" Stretch="Uniform" Height="150" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 30 0 0"  />
+                    <!-- Navigation Menu  -->
+                    <Grid Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        
+                        <!-- Logo  -->
+                        <Border Grid.Column="0" Height="90" Width="90" Background="{StaticResource MainColor}" 
+                                VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="10">
+                            <Image Source="/Ressources/logo.png" Stretch="Uniform" Height="80" Width="80" Margin="5 5 0 0"/>
 
-                    <StackPanel Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5"/>
-                        <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5"/>
-                        <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5"/>
-                        <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5" />
-                        <Button Content="Bestellungen" Style="{StaticResource ProButtonStyle}" Margin="5" />
-                    </StackPanel>
+                        </Border>
 
-                    <Button Grid.Row="2" Content="Ausloggen" Style="{StaticResource ProButtonStyle}" />
+                        <!-- NavigationBar  -->
+                        <Border x:Name="NavBar" Grid.Column="1" Width="450" Background="{StaticResource MainColor}" Height="55" Margin="-2">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                
+                                
+                                <Button Style="{StaticResource NavBarButton}" Width="120" >
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Path Fill="#FFF" Height="20" Width="20"
+                                                    Data="M4.68,13.716v-0.169H4.554C4.592,13.605,4.639,13.658,4.68,13.716z M11.931,6.465
+	                                                c-0.307-0.087-0.623,0.106-0.706,0.432l-1.389,5.484c-0.901,0.084-1.609,0.833-1.609,1.757c0,0.979,0.793,1.773,1.773,1.773
+	                                                c0.979,0,1.773-0.794,1.773-1.773c0-0.624-0.324-1.171-0.812-1.486l1.377-5.439C12.422,6.887,12.239,6.552,11.931,6.465z
+	                                                M10.591,14.729H9.408v-1.182h1.183V14.729z M15.32,13.716c0.04-0.058,0.087-0.11,0.126-0.169H15.32V13.716z M10,3.497
+	                                                c-3.592,0-6.503,2.911-6.503,6.503H4.68c0-2.938,2.382-5.32,5.32-5.32s5.32,2.382,5.32,5.32h1.182
+	                                                C16.502,6.408,13.591,3.497,10,3.497z M10,0.542c-5.224,0-9.458,4.234-9.458,9.458c0,5.224,4.234,9.458,9.458,9.458
+	                                                c5.224,0,9.458-4.234,9.458-9.458C19.458,4.776,15.224,0.542,10,0.542z M15.32,16.335v0.167h-0.212
+	                                                c-1.407,1.107-3.179,1.773-5.108,1.773c-1.93,0-3.701-0.666-5.108-1.773H4.68v-0.167C2.874,14.816,1.724,12.543,1.724,10
+	                                                c0-4.571,3.706-8.276,8.276-8.276c4.57,0,8.275,3.706,8.275,8.276C18.275,12.543,17.126,14.816,15.32,16.335z"/>
+                                            <Label Content="Dashboard" Foreground="#FFF" FontFamily="{StaticResource SourceSansPro}" FontSize="15" FontWeight="Light"/>
+                                        </StackPanel>
+                                        </Button.Content>
+                                </Button>
+
+                                
+                                <Button Style="{StaticResource NavBarButton}" Width="70" Margin="20 0" >
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Path Fill="#FFF" Height="20" Width="20"
+                                                  Data="M4.423,9.141H3.565c-0.237,0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.192,0.429-0.429S4.66,
+                                                  9.141,4.423,9.141 M6.997,16.861H6.139c-0.237,0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.237,0,0.429-0.191,
+                                                  0.429-0.429S7.234,16.861,6.997,16.861 M4.423,16.861H3.565c-0.237,0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.237,
+                                                  0,0.429-0.191,0.429-0.429S4.66,16.861,4.423,16.861M13.861,9.998h0.857c0.236,0,0.429-0.192,0.429-0.429s-0.192-0.429-0.429-0.429h-0.857c-0.237,
+                                                  0-0.43,0.192-0.43,0.429S13.624,9.998,13.861,9.998 M14.719,16.861h-0.857c-0.237,0-0.43,0.192-0.43,0.43s0.192,0.429,0.43,0.429h0.857c0.236,
+                                                  0,0.429-0.191,0.429-0.429S14.955,16.861,14.719,16.861 M15.576,13.001c-0.236,0-0.429,0.192-0.429,0.43c0,0.236,0.192,0.429,0.429,0.429c0.237,
+                                                  0,0.43-0.192,0.43-0.429C16.006,13.193,15.813,13.001,15.576,13.001 M6.997,9.141H6.139c-0.237,0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,
+                                                  0.429h0.858c0.237,0,0.429-0.192,0.429-0.429S7.234,9.141,6.997,9.141M12.145,9.141h-0.857c-0.236,0-0.429,0.192-0.429,0.429s0.193,0.429,
+                                                  0.429,0.429h0.857c0.237,0,0.43-0.192,0.43-0.429S12.382,9.141,12.145,9.141 M17.722,10.856V7.424c0-0.948-0.769-1.716-1.716-1.716h-0.617l-1.038-3.873c-0.245-0.916-1.186-1.458-2.101-1.213L3.592,
+                                                  2.912C2.676,3.157,2.133,4.098,2.378,5.014l0.186,0.695H2.278c-0.947,0-1.716,0.768-1.716,1.716V17.72c0,0.947,0.769,1.716,1.716,1.716h13.728c0.947,
+                                                  0,1.716-0.769,1.716-1.716v-1.716c0.947,0,1.716-0.769,1.716-1.716v-1.716C19.438,11.624,18.669,10.856,17.722,10.856 M16.006,6.566c0.473,0,0.857,0.384,
+                                                  0.857,0.858v0.238c-0.253-0.146-0.544-0.238-0.857-0.238h-0.157l-0.229-0.858H16.006z M14.41,5.372l0.55,2.053H6.67L14.41,5.372z M3.814,
+                                                  3.741l8.657-2.29c0.458-0.123,0.928,0.149,1.051,0.607l0.222,0.828L3.43,5.621l-0.223-0.83C3.084,4.333,3.356,3.863,3.814,3.741M1.42,
+                                                  7.424c0-0.474,0.384-0.858,0.858-0.858h0.517l0.229,0.858H2.278c-0.314,0-0.605,0.091-0.858,0.238V7.424z M16.863,17.72c0,0.474-0.385,0.858-0.857,
+                                                  0.858H2.278c-0.474,0-0.858-0.385-0.858-0.858V9.141c0-0.474,0.384-0.858,0.858-0.858h13.728c0.473,0,0.857,0.384,0.857,0.858v1.715h-1.716c-0.947,
+                                                  0-1.716,0.768-1.716,1.716v1.716c0,0.947,0.769,1.716,1.716,1.716h1.716V17.72z M18.58,14.288c0,0.474-0.385,0.857-0.858,0.857h-2.574c-0.474,
+                                                  0-0.857-0.384-0.857-0.857v-1.716c0-0.474,0.384-0.858,0.857-0.858h2.574c0.474,0,0.858,0.385,0.858,0.858V14.288z M9.571,16.861H8.713c-0.237,
+                                                  0-0.429,0.192-0.429,0.43s0.192,0.429,0.429,0.429h0.858c0.236,0,0.429-0.191,0.429-0.429S9.808,16.861,9.571,16.861M12.145,16.861h-0.857c-0.236,
+                                                  0-0.429,0.192-0.429,0.43s0.193,0.429,0.429,0.429h0.857c0.237,0,0.43-0.191,0.43-0.429S12.382,16.861,12.145,16.861 M9.571,9.141H8.713c-0.237,
+                                                  0-0.429,0.192-0.429,0.429s0.192,0.429,0.429,0.429h0.858C9.808,9.998,10,9.806,10,9.569S9.808,9.141,9.571,9.141"/>
+                                            <Label Content="POS" Foreground="#FFF" FontFamily="{StaticResource SourceSansPro}" FontSize="15" FontWeight="Light"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                                
+                                
+                                <Button Style="{StaticResource NavBarButton}" Width="90" >
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Path Fill="#FFF" Height="20" Width="20" Stretch="Fill"
+                                                  Data="M 25.27 86.92 c -1.81 0 -3.26 -1.46 -3.26 -3.26 s 1.47 -3.26 3.26 -3.26 h 21.49 c 1.81 0 3.26 1.46 3.26 3.26 s
+                                                  -1.46 3.26 -3.26 3.26 H 25.27 L 25.27 86.92 L 25.27 86.92 Z M 61.1 77.47 c -0.96 0 -1.78 -0.82 -1.78 -1.82 c
+                                                  0 -0.96 0.82 -1.78 1.78 -1.78 h 4.65 c 0.04 0 0.14 0 0.18 0 c 1.64 0.04 3.1 0.36 4.33 1.14 c 1.37 0.87 2.37 2.19 2.92 4.15 c
+                                                  0 0.04 0 0.09 0.05 0.14 l 0.46 1.82 h 39.89 c 1 0 1.78 0.82 1.78 1.78 c 0 0.18 -0.05 0.36 -0.09 0.55 l -4.65 18.74 c -0.18 0.82 -0.91 1.37 -1.73 1.37 l
+                                                  0 0 l -29.18 0 c 0.64 2.37 1.28 3.65 2.14 4.24 c 1.05 0.68 2.87 0.73 5.93 0.68 h 0.04 l 0 0 h 20.61 c 1 0 1.78 0.82 1.78 1.78 c
+                                                  0 1 -0.82 1.78 -1.78 1.78 H 87.81 l 0 0 c -3.79 0.04 -6.11 -0.05 -7.98 -1.28 c -1.92 -1.28 -2.92 -3.46 -3.92 -7.43 l 0 0 L 69.8 80.2 c
+                                                  0 -0.05 0 -0.05 -0.04 -0.09 c -0.27 -1 -0.73 -1.69 -1.37 -2.05 c -0.64 -0.41 -1.5 -0.59 -2.51 -0.59 c -0.05 0 -0.09 0 -0.14 0 H 61.1 L 61.1 77.47 L
+                                                  61.1 77.47 Z M 103.09 114.13 c 2.42 0 4.38 1.96 4.38 4.38 s -1.96 4.38 -4.38 4.38 s -4.38 -1.96 -4.38 -4.38 S 100.67 114.13 103.09 114.13 L 103.09 114.13 L
+                                                  103.09 114.13 Z M 83.89 114.13 c 2.42 0 4.38 1.96 4.38 4.38 s -1.96 4.38 -4.38 4.38 c -2.42 0 -4.38 -1.96 -4.38 -4.38 S 81.48 114.13 83.89 114.13 L 
+                                                  83.89 114.13 L 83.89 114.13 Z M 25.27 33.58 c -1.81 0 -3.26 -1.47 -3.26 -3.26 c 0 -1.8 1.47 -3.26 3.26 -3.26 h 50.52 c 1.81 0 3.26 1.46 3.26 3.26 c
+                                                  0 1.8 -1.46 3.26 -3.26 3.26 H 25.27 L 25.27 33.58 L 25.27 33.58 Z M 7.57 0 h 85.63 c 2.09 0 3.99 0.85 5.35 2.21 s 2.21 3.26 2.21 5.35 v 59.98 h -6.5 V 7.59 c 
+                                                  0 -0.29 -0.12 -0.56 -0.31 -0.76 c -0.2 -0.19 -0.47 -0.31 -0.76 -0.31 l 0 0 H 7.57 c -0.29 0 -0.56 0.12 -0.76 0.31 S 6.51 7.3 6.51 7.59 v 98.67 c
+                                                  0 0.29 0.12 0.56 0.31 0.76 s0.46 0.31 0.76 0.31 h 55.05 c 0.61 2.39 1.3 4.48 2.23 6.47 H 7.57 c -2.09 0 -3.99 -0.85 -5.35 -2.21 C 0.85 110.24 0 108.34 0 106.25 V 7.57 c
+                                                  0 -2.09 0.85 -4 2.21 -5.36 S 5.48 0 7.57 0 L 7.57 0 L 7.57 0 Z M 25.27 60.25 c -1.81 0 -3.26 -1.46 -3.26 -3.26 s 1.47 -3.26 3.26 -3.26 
+                                                  h 50.52 c 1.81 0 3.26 1.46 3.26 3.26 s-1.46 3.26 -3.26 3.26 H 25.27 L 25.27 60.25 L 25.27 60.25 Z"/>
+                                            <Label Content="Orders" Foreground="#FFF" FontFamily="{StaticResource SourceSansPro}" FontSize="15" FontWeight="Light"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Slider Button  -->
+                        <Border Grid.Column="2" Background="{StaticResource MainColor}" Margin="-2 0 0 0" MouseDown="NavBarOpenClose"
+                                CornerRadius="0 20 20 0" Height="55" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+
+                                <Border x:Name="OpenNavBar" Visibility="Hidden" Cursor="Hand" Height="45" Width="30" CornerRadius="0 15 15 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#000" Opacity="0.5"/>
+                                    </Border.Background>
+                                    
+                                    <Path Data="M 0 0 h 275.1 v 50.04 H 0 V 0 Z m 361.79 115.14 l 
+                                          54.44 54.44 H 0 v 50.04 h 416.2 l -54.41 54.41 l
+                                          35.39 35.39 L 512 194.6 v -0.03 l -35.39 -35.36 l -79.43 -79.46 l
+                                          -35.39 35.39 Z M 0 339.2 h 275.1 v 50.04 H 0 V 339.2 Z"
+                                          Fill="#FFFFFF" Stretch="Fill" Width="20" Height="12"/>
+
+                                    <Border.Triggers>
+                                        <EventTrigger RoutedEvent="Border.MouseDown">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+
+                                                        <DoubleAnimation Storyboard.TargetName="NavBar" Storyboard.TargetProperty="Width" From="0" To="450" Duration="0:0:1" />
+
+                                                    </Storyboard>
+
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+
+                                        </EventTrigger>
+                                    </Border.Triggers>
+
+                                </Border>
+
+                                <Border x:Name="CloseNavBar" Cursor="Hand" Height="45" Width="30" CornerRadius="0 15 15 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#000" Opacity="0.5"/>
+                                    </Border.Background>
+                                    <Path Data="M 512 50.04 H 236.9 V 0 H 512 v 50.04 Z m -361.79 65.1 l
+                                          -54.45 54.44 H 512 v 50.04 H 95.79 l 54.42 54.41 l -35.39 35.39
+                                          L 0 194.6 v -0.03 l 35.39 -35.36 l 79.43 -79.46 l 35.39 35.39 Z
+                                          M 512 389.24 H 236.9 V 339.2 H 512 v 50.04 Z"
+                                          Fill="#FFFFFF" Stretch="Fill" Width="20" Height="12"/>
+
+                                    <Border.Triggers>
+                                        <EventTrigger RoutedEvent="Border.MouseDown">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+
+                                                        <DoubleAnimation Storyboard.TargetName="NavBar" Storyboard.TargetProperty="Width" From="450" To="0" Duration="0:0:1" />
+
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+
+                                        </EventTrigger>
+                                    </Border.Triggers>
+
+                                </Border>
+
+                            </Grid>
+
+                        </Border>
+
+                    </Grid>
+
+
+                    <!--   -->
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="65"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Height="35" Width="130" Padding="0 5 0 0" CornerRadius="0 20 0 20"
+                                HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource MainColorAsColor}" Opacity="0.9" />
+                            </Border.Background>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="45"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" CornerRadius="12" Cursor="Hand" MouseDown="MinButton_MouseDown"
+                                        Height="20" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#FF242424" Opacity="0.5" />
+                                    </Border.Background>
+                                    <Path Fill="#FFFFFF" Stretch="Fill" Height="1" Width="7"
+                                          Data="M6 13a1 1 0 1 1 0-2h12a1 1 0 1 1 0 2H6Z"/>
+                                </Border>
+
+                                <Border Grid.Column="1" CornerRadius="12" MouseDown="MaxButton_MouseDown"
+                                        HorizontalAlignment="Center" Height="20" Width="30" Cursor="Hand">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#FF242424" Opacity="0.5" />
+                                    </Border.Background>
+                                    <Grid >
+                                        <Path Fill="#FFFFFF" Height="7" Width="7" Stretch="Fill" Visibility="Hidden"
+                                              Data="M8.47727,2 C8.06306,2 7.72727,2.33579 7.72727,2.75 C7.72727,3.16421 8.06306,3.5 8.47727,
+                                              3.5 L11.4393,3.5 L3.5,11.4393 L3.5,8.47727 C3.5,8.06306 3.16421,7.72727 2.75,7.72727 C2.33579,
+                                              7.72727 2,8.06306 2,8.47727 L2,13.15 C2,13.6194 2.38056,14 2.85,14 L7.52273,14 C7.93694,14 8.27273,
+                                              13.6642 8.27273,13.25 C8.27273,12.8358 7.93694,12.5 7.52273,12.5 L4.56066,12.5 L12.5,4.56066 L12.5,
+                                              7.52273 C12.5,7.93694 12.8358,8.27273 13.25,8.27273 C13.6642,8.27273 14,7.93694 14,7.52273 L14,
+                                              2.85 C14,2.38056 13.6194,2 13.15,2 L8.47727,2 Z"/>
+
+                                        <Path Stroke="#FFFFFF" Height="8" Width="8" StrokeThickness="1" Stretch="Fill"
+                                              Visibility="Visible" Data="M1 11h6v6M17 7h-6V1M11 7l7-7M0 18l7-7"/>
+
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="2" CornerRadius="12"
+                                        HorizontalAlignment="Left" Height="20" Width="30" Cursor="Hand" MouseDown="CloseButton_MouseDown">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="#FFD31313" Opacity="0.5" />
+                                    </Border.Background>
+                                    <Path Fill="#FFFFFF" Stretch="Fill" Height="7" Width="7"
+                                          Data="M13.4,12l6.3-6.3c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,
+                                          0c-0.4,0.4-0.4,1,0,1.4 l6.3,6.3l-6.3,6.3C4.1,18.5,4,18.7,4,19c0,0.6,0.4,1,1,1c0.3,0,0.5-0.1,
+                                          0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.4,0.3,0.7,0.3 s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L13.4,12z"/>
+
+                                </Border>
+
+
+                            </Grid>
+
+                        </Border>
+
+                    </Grid>
 
                 </Grid>
             </Border>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="600"/>
-                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="390"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Margin="5 40 10 5" Orientation="Vertical">
+                <Border Grid.Column="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
 
-                    <Frame x:Name="ProductsView" Height="650" >
-                        <Frame.Content>
-                            <Vs:ProductsBoxView />
-                        </Frame.Content>
-                    </Frame>
+                    <Frame x:Name="ProductsView" Width="Auto"/>
 
-                </StackPanel>
+                </Border>
 
-                <ListView Name="LV" ItemsSource="{Binding Items}" Grid.Column="1" Height="500">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Label Content="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Label Content="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <Border Grid.Column="1" Background="#FFFFFF" Height="Auto" Width="370"
+                        CornerRadius="20" Margin="10 20" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="10" Direction="-90" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="Current Order" FontSize="20" FontFamily="{StaticResource SourceSansPro}" 
+                                       FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <Button Grid.Column="1" Style="{StaticResource NavBarButton}" Width="100" Content="Clear All" Command="{Binding ClearItemsCommand}"/>
+
+                        </Grid>
+                        
+                        
+                        <ListView Name="LV" Grid.Row="1" ItemsSource="{Binding Items}"
+                                  Background="Transparent" Margin="6" BorderThickness="0">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border Background="Transparent" Height="50" Width="350"
+                                            CornerRadius="15" BorderBrush="#E1E1E1" BorderThickness="1"
+                                            VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="155"/>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="85"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.Column="0" HorizontalAlignment="Left" Height="49" Width="49" CornerRadius="14">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill" />
+                                                </Border.Background>
+                                            </Border>
+
+                                            <TextBlock Grid.Column="1" Text="{Binding Title}" 
+                                                       FontFamily="{StaticResource SourceSansPro}"
+                                                       FontSize="12" FontWeight="DemiBold"
+                                                       TextWrapping="Wrap" Width="150"
+                                                       Padding="5 0 0 0"
+                                                       VerticalAlignment="Center"/>
+
+
+                                            <Border Grid.Column="3" x:Name="ItemCountity"
+                                                    Height="23" Width="70"
+                                                    HorizontalAlignment="Left"
+                                                    Margin="5 0 0 0">
+                                                <Border.Effect>
+                                                    <DropShadowEffect BlurRadius="14" Direction="-91" Opacity="0.5" ShadowDepth="1"/>
+                                                </Border.Effect>
+
+
+                                                <Grid VerticalAlignment="Center">
+                                                    <Grid.ColumnDefinitions >
+                                                        <ColumnDefinition Width="25"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="25"/>
+                                                    </Grid.ColumnDefinitions>
+
+
+                                                    <!-- Here the to change the Order Item's Quantity -->
+                                                    <Border Width="70" Height="23"
+                                                            Background="{StaticResource MainColor}"
+                                                            CornerRadius="12"
+                                                            Grid.ColumnSpan="3"
+                                                            HorizontalAlignment="Center" >
+                                                        <Border HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Top"
+                                                                Margin="0 -1 0 0">
+                                                            <Label FontFamily="{StaticResource SourceSansPro}"
+                                                                FontWeight="Regular"
+                                                                Content="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"
+                                                                FontSize="14"
+                                                                Foreground="#FFFFFF" />
+
+                                                        </Border>
+
+                                                    </Border>
+
+
+                                                    <Button Grid.Column="0"
+                                                                Style="{StaticResource PlusMinusButtons}"
+                                                                Command="{Binding OneLessProductCommande}">
+                                                        <Button.Content>
+                                                            <Grid>
+                                                                <Grid.Resources>
+                                                                    <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                                                </Grid.Resources>
+                                                                <Path Height="1.5"
+                                                                          Width="8"
+                                                                          Stretch="Fill"
+                                                                          Data="M 467.4 212.4 H 42.9 c -24.2 0 -43.7 19.6 -43.7 43.7 s 19.6 43.7 43.7 43.7 h 424.5 c 24.2 0 43.7 -19.6 43.7 -43.7 S 491.5 212.4 467.4 212.4 Z" />
+                                                            </Grid>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    <Button Grid.Column="2"
+                                                                Style="{StaticResource PlusMinusButtons}"
+                                                                Command="{Binding OneMoreProductCommande}" >
+                                                        <Button.Content>
+                                                            <Grid>
+                                                                <Grid.Resources>
+                                                                    <Style TargetType="{x:Type Path}" BasedOn="{StaticResource Icon}"/>
+                                                                </Grid.Resources>
+                                                                <Path Height="8"
+                                                                            Width="8"
+                                                                            Stretch="Fill"
+                                                                            Data="M 468.3 212.7 H 305.2 v -169 c 0 -24.2 -19.6 -43.8 -43.8 -43.8 c -24.2 0 -43.8 19.6 -43.8 43.8 v 169 h -174 C 19.6 212.7 0 232.3 0 256.5 c 0 24.2 19.6 43.8 43.8 43.8 h 174 v 168 c 0 24.2 19.6 43.8 43.8 43.8 c 24.2 0 43.8 -19.6 43.8 -43.8 v -168 h 163.1 c 24.2 0 43.8 -19.6 43.8 -43.8 C 512 232.3 492.5 212.7 468.3 212.7 Z" />
+                                                            </Grid>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </Grid>
+
+                                            </Border>
+
+                                            <Grid Grid.Column="2"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center">
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="15"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0"
+                                                    x:Name="ItemPrice"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top"
+                                                    FontWeight="Bold"
+                                                    FontSize="16"
+                                                    Padding="0 2 0 0"
+                                                    FontFamily="{StaticResource SourceSansPro}"
+                                                    Content="{Binding Price}" 
+                                                    Foreground="#000000" />
+                                                <Label Grid.Column="1"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    FontWeight="Bold"
+                                                    FontSize="12"
+                                                    Padding="2 0 0 0"
+                                                    FontFamily="{StaticResource Nunito}"
+                                                    Content="€" Foreground="#FF155A08" />
+                                            </Grid>
+
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Background="Transparent"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+
+                        </ListView>
+
+
+
+                    </Grid>
+
+
+                </Border>
+
             </Grid>
 
 

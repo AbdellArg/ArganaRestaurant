@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -66,16 +67,16 @@ namespace ArganaRestaurant.Ressources.Styles.Components
             _ = CurrentItem.Quantity == 0 ? this.CardHolder.BorderThickness = new Thickness(0) : this.CardHolder.BorderThickness = new Thickness(3);
         }
 
-
+        
 
         
         private void CardHolder_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentItem = (ProductViewModel)this.DataContext;
             _ = CurrentItem.IsVegan ? this.VeganIcon.Visibility = Visibility.Visible : this.VeganIcon.Visibility = Visibility.Hidden;
+            EffectsOnCountityChanged();
 
-
-            // add a Event Listener To the CurrentProducts, when it Propreties changed
+            // add a Event Listener To the CurrentProducts, when a Propreties changed from the ViewModel we will get notified
             CurrentItem.PropertyChanged += ProductPropertyChanged;
 
         }

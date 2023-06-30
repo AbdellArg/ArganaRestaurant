@@ -132,8 +132,42 @@
 
     </Style>
 
-    
 
+    <!-- POS OrdersList Items Style --><!--
+    <Style x:Key="OrdersListItemTemplate" TargetType="ListViewItem">
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Width" Value="370"/>
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    Background="{TemplateBinding Background}" 
+                                                    Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="Holder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <ControlTemplate x:Key="OrdersItemListViewTemplate" TargetType="{x:Type ListView}">
+        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="1" SnapsToDevicePixels="true">
+            <ScrollViewer Style="{DynamicResource ScrollViewerStyle}" Focusable="false" Padding="{TemplateBinding Padding}">
+                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </ScrollViewer>
+        </Border>
+    </ControlTemplate>-->
 
 
     <Style x:Key="Icon" TargetType="{x:Type Path}">
